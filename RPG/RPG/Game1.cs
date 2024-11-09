@@ -16,7 +16,7 @@ namespace RPG
         int _screenWidth = 900;
         int _screenHeight = 900;
 
-        public Game1()
+        public Game1() 
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
