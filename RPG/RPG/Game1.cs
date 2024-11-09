@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using RPG.ScreenManagement;
+using RPG.Screens;
 
 namespace RPG
 {
@@ -8,12 +10,31 @@ namespace RPG
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private ScreenManager _screenManager;
+
+        int _screenWidth = 900;
+        int _screenHeight = 900;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            Window.Title = "RPG";
+
+            _screenManager = new ScreenManager(this);
+            Components.Add(_screenManager);
+
+            AddInitialScreens();
+
+            _graphics.PreferredBackBufferWidth = _screenWidth;
+            _graphics.PreferredBackBufferHeight = _screenHeight;
+        }
+
+        private void AddInitialScreens()
+        {
+            _screenManager.AddScreen(new MainMenu());
+
         }
 
         protected override void Initialize()
