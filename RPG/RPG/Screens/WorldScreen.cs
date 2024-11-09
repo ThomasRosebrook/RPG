@@ -17,6 +17,23 @@ namespace RPG.Screens
         private int width;
         private int height;
 
+        Tilemap tilemap;
+
+        static List<string> tilemaps = new List<string>
+        {
+            "Tilemap1.txt",
+            "Tilemap2.txt",
+            "Tilemap3.txt",
+            "Tilemap4.txt",
+            "Tilemap5.txt",
+            "Tilemap6.txt",
+            "Tilemap7.txt",
+            "Tilemap8.txt",
+            "Tilemap9.txt"
+        };
+
+        public static int CurrentTileMap = 2;
+
         public WorldScreen()
         {
 
@@ -28,6 +45,15 @@ namespace RPG.Screens
 
             if (width <= 0) width = ScreenManager.GraphicsDevice.Viewport.Width;
             if (height <= 0) height = ScreenManager.GraphicsDevice.Viewport.Height;
+            tilemap = new Tilemap(tilemaps[CurrentTileMap]);
+            tilemap.LoadContent(_content);
+        }
+
+        public void SetTileMap (int map)
+        {
+            CurrentTileMap = map;
+            tilemap = new Tilemap(tilemaps[CurrentTileMap]);
+            if (_content == null) tilemap.LoadContent(_content);
         }
 
         public override void Unload()
@@ -70,6 +96,7 @@ namespace RPG.Screens
             var spriteBatch = ScreenManager.SpriteBatch;
 
             spriteBatch.Begin();
+            tilemap.Draw(gameTime, spriteBatch);
 
             string currentText = "ESC to open Menu";
             Vector2 size = PixelFont.SizeOf(currentText, FontSize.Medium);

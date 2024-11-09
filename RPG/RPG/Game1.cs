@@ -10,7 +10,6 @@ namespace RPG
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Tilemap tilemap;
         private ScreenManager _screenManager;
 
         int _screenWidth = 900;
@@ -41,7 +40,6 @@ namespace RPG
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            tilemap = new Tilemap("Tilemap8.txt");
             base.Initialize();
         }
 
@@ -50,8 +48,6 @@ namespace RPG
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PixelFont.LoadFonts(Content);
-
-            tilemap.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -69,7 +65,7 @@ namespace RPG
         {
             GraphicsDevice.Clear(new Color(32, 18, 8));
             _spriteBatch.Begin();
-            tilemap.Draw(gameTime, _spriteBatch);
+            
             _spriteBatch.End();
             // TODO: Add your drawing code here
 
