@@ -1,18 +1,23 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using RPG.ScreenManagement;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RPG.Screens
 {
-    public class MainMenu : GameScreen
+    public class WorldScreen : GameScreen
     {
         private ContentManager _content;
 
         private int width;
         private int height;
 
-        public MainMenu()
+        public WorldScreen()
         {
 
         }
@@ -46,12 +51,14 @@ namespace RPG.Screens
 
             if (input.Escape)
             {
-                ScreenManager.Game.Exit();
+                ScreenManager.AddScreen(new SideMenu());
+                //ScreenManager.Game.Exit();
             }
 
             if (input.Space)
             {
-                ScreenManager.AddScreen(new WorldScreen());
+                ScreenManager.AddScreen(new DialogueBox("Dialogue", "Hello world!"));
+                //this.ExitScreen();
             }
 
         }
@@ -64,12 +71,8 @@ namespace RPG.Screens
 
             spriteBatch.Begin();
 
-            string currentText = "The Quest For RPG";
-            Vector2 size = PixelFont.SizeOf(currentText, FontSize.Large);
-            PixelFont.DrawString(spriteBatch, FontSize.Large, new Vector2(width / 2 - size.X / 2, 20), Color.White, currentText);
-
-            currentText = "Exit: ESC or Back";
-            size = PixelFont.SizeOf(currentText, FontSize.Medium);
+            string currentText = "ESC to open Menu";
+            Vector2 size = PixelFont.SizeOf(currentText, FontSize.Medium);
             PixelFont.DrawString(spriteBatch, FontSize.Medium, new Vector2(width / 2 - size.X / 2, height - size.Y), Color.White, currentText);
 
             spriteBatch.End();

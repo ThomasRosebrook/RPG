@@ -10,7 +10,7 @@ namespace RPG
         static SpriteFont MediumFont;
         static SpriteFont LargeFont;
 
-        static bool isInitialized;
+        static bool isInitialized = false;
 
         public static void LoadFonts(ContentManager content)
         {
@@ -19,6 +19,7 @@ namespace RPG
                 SmallFont = content.Load<SpriteFont>("PublicPixelSmall");
                 MediumFont = content.Load<SpriteFont>("PublicPixel");
                 LargeFont = content.Load<SpriteFont>("PublicPixelLarge");
+                isInitialized = true;
             }
         }
 

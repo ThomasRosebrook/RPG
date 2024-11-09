@@ -48,7 +48,7 @@ namespace RPG.ScreenManagement
 
         public override void Update(GameTime gameTime)
         {
-            input.Update();
+            input.Update(gameTime);
 
             _tempScreens.Clear();
             _tempScreens.AddRange(_screens);
