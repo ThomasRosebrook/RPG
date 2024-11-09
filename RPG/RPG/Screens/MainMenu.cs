@@ -12,8 +12,6 @@ namespace RPG.Screens
         private int width;
         private int height;
 
-        SpriteFont font;
-
         public MainMenu()
         {
 
@@ -22,7 +20,6 @@ namespace RPG.Screens
         public override void Activate()
         {
             if (_content == null) _content = new ContentManager(ScreenManager.Game.Services, "Content");
-            if (font == null) font = ScreenManager.Font;
 
             if (width <= 0) width = ScreenManager.GraphicsDevice.Viewport.Width;
             if (height <= 0) height = ScreenManager.GraphicsDevice.Viewport.Height;
@@ -49,6 +46,12 @@ namespace RPG.Screens
 
             if (input.Escape) ScreenManager.Game.Exit();
 
+            if (input.Space)
+            {
+                ScreenManager.AddScreen(new DialogueBox("This is the name", "This is the text to display."));
+                //this.ExitScreen();
+            }
+
         }
 
         public override void Draw(GameTime gameTime)
@@ -60,12 +63,12 @@ namespace RPG.Screens
             spriteBatch.Begin();
 
             string currentText = "The Quest For RPG";
-            Vector2 size = font.MeasureString(currentText);
-            spriteBatch.DrawString(font, currentText, new Vector2(width / 2 - size.X / 2, 20), Color.White);
+            Vector2 size = PixelFont.SizeOf(currentText, FontSize.Large);
+            PixelFont.DrawString(spriteBatch, FontSize.Large, new Vector2(width / 2 - size.X / 2, 20), Color.White, currentText);
 
             currentText = "Exit: ESC or Back";
-            size = font.MeasureString(currentText);
-            spriteBatch.DrawString(font, currentText, new Vector2(width / 2 - size.X / 2, height - size.Y), Color.White);
+            size = PixelFont.SizeOf(currentText, FontSize.Medium);
+            PixelFont.DrawString(spriteBatch, FontSize.Medium, new Vector2(width / 2 - size.X / 2, height - size.Y), Color.White, currentText);
 
             spriteBatch.End();
         }

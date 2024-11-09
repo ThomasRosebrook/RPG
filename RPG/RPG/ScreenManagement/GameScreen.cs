@@ -11,7 +11,7 @@ namespace RPG.ScreenManagement
     {
         public ScreenManager ScreenManager { get; internal set; }
 
-        public ScreenState ScreenState { get; set; } = ScreenState.Inactive;
+        public ScreenState ScreenState { get; set; } = ScreenState.Active;
 
         public bool IsExiting { get; internal set; }
         public bool IsPopup { get; protected set; }

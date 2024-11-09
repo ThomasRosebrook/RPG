@@ -20,6 +20,8 @@ namespace RPG.ScreenManagement
 
         public bool Escape { get; private set; } = false;
 
+        public bool Space { get; private set; } = false;
+
         public void Update ()
         {
             previousMouseState = currentMouseState;
@@ -30,6 +32,13 @@ namespace RPG.ScreenManagement
 
             previousKeyboardState = currentKeyboardState;
             currentKeyboardState = Keyboard.GetState();
+
+            Space = false;
+            if (currentGamePadState.Buttons.A == ButtonState.Pressed && previousGamePadState.Buttons.A == ButtonState.Released
+                || currentKeyboardState.IsKeyDown(Keys.Space) && !previousKeyboardState.IsKeyDown(Keys.Space))
+            {
+                Space = true;
+            }
 
             Escape = false;
             if (currentGamePadState.Buttons.Back == ButtonState.Pressed && previousGamePadState.Buttons.Back == ButtonState.Released 

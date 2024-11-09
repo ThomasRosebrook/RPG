@@ -9,8 +9,6 @@ namespace RPG.ScreenManagement
     {
         public SpriteBatch SpriteBatch { get; private set; }
 
-        public SpriteFont Font { get; private set; }
-
         List<GameScreen> _screens = new List<GameScreen>();
         List<GameScreen> _tempScreens = new List<GameScreen>();
 
@@ -33,7 +31,6 @@ namespace RPG.ScreenManagement
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            Font = content.Load<SpriteFont>("Arial");
 
             foreach (var screen in _screens)
             {
@@ -59,8 +56,11 @@ namespace RPG.ScreenManagement
             bool unfocused = !Game.IsActive;
             bool covered = false;
 
-            foreach (GameScreen screen in _tempScreens)
+            while (_tempScreens.Count > 0)
             {
+                var screen = _tempScreens[_tempScreens.Count - 1];
+                _tempScreens.RemoveAt(_tempScreens.Count - 1);
+
                 screen.Update(gameTime, unfocused, covered);
 
                 if (screen.ScreenState == ScreenState.Active)
