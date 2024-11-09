@@ -59,9 +59,7 @@ namespace RPG.Screens
         {
             base.HandleInput(gameTime, input);
 
-            if (input.Escape) ScreenManager.Game.Exit();
-
-            if (input.Space) this.ExitScreen();
+            if (input.Escape || input.Space) this.ExitScreen();
 
         }
 
