@@ -32,7 +32,7 @@ namespace RPG.Screens
             "Tilemap9.txt"
         };
 
-        public static int CurrentTileMap = 2;
+        public static int CurrentTileMap = 7;
 
         public WorldScreen()
         {

@@ -87,8 +87,6 @@ namespace RPG.Screens
 
         public override void Draw(GameTime gameTime)
         {
-            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0);
-
             var spriteBatch = ScreenManager.SpriteBatch;
 
             spriteBatch.Begin();

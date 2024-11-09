@@ -19,6 +19,8 @@ namespace RPG.Screens
         public void Draw(SpriteBatch spriteBatch, Vector2 menuPosition)
         {
             Color color = (IsHovered) ? Color.White : Color.Black;
+            if (IsHovered) PixelFont.DrawString(spriteBatch, FontSize, menuPosition + new Vector2(2f, 2f), Color.Black, Name);
+
             PixelFont.DrawString(spriteBatch, FontSize, menuPosition, color, Name);
         }
     }
