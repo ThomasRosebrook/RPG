@@ -122,7 +122,8 @@ namespace RPG.Screens
                         if (menu.test == true)
                         {
                             menu.ExitScreen();
-                            _changeTurn.Invoke();
+                            menu = null;
+                            FlipTurn();
                         }
                         //PlayerTurn();
 
@@ -130,7 +131,7 @@ namespace RPG.Screens
                     else if (whoTurn == Turn.Enemy)
                     {
                         EnemyTurn();
-                        _changeTurn.Invoke();
+                        FlipTurn();
 
                     }
                 }
@@ -142,11 +143,12 @@ namespace RPG.Screens
         {
             
             base.Draw(gameTime);
-            ScreenManager.SpriteBatch.Begin();
+            var spriteBatch = ScreenManager.SpriteBatch;
+            spriteBatch.Begin();
             //ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
-            _player.Draw(gameTime, ScreenManager.SpriteBatch);
-            _enemy.Draw(gameTime, ScreenManager.SpriteBatch);
-            ScreenManager.SpriteBatch.End();
+            _player.Draw(gameTime, spriteBatch);
+            _enemy.Draw(gameTime, spriteBatch);
+            spriteBatch.End();
         }
 
         /*public void PlayerTurn()
