@@ -97,8 +97,7 @@ namespace RPG.Screens
         public override void Update(GameTime gameTime, bool unfocused, bool covered)
         {
             if (IsActive)
-            {
-                
+            { 
                 
                 if (_player.HP >= 0 && _enemy.GetHP() >= 0)
                 {
@@ -121,7 +120,7 @@ namespace RPG.Screens
                     else if (whoTurn == Turn.Enemy)
                     {
                         EnemyTurn();
-                        whoTurn = Turn.Player;
+                        
                     }
                 }
             }
@@ -170,6 +169,7 @@ namespace RPG.Screens
 
         public void EnemyTurn()
         {
+            whoTurn = Turn.Player;
             int turn = _rand.Next(2);
 
             switch (turn)

@@ -14,7 +14,6 @@ namespace RPG.Screens
     {
         Player _player;
         Enemy _enemy;
-        bool _flag;
         public AttackScreen(Player player, Enemy enemy, bool flag) : base("Physical", "Magic", "Bribe", "Other")
         {
             _player = player;
@@ -28,14 +27,13 @@ namespace RPG.Screens
             int HP = _enemy.GetHP();
             int num = _enemy.GetHP() - _player.strength; 
             _enemy.SetHP(num);
-            _flag = true;
+
         }
 
         protected override void SelectOptionTwo()
         {
             int num = _player.magic - _enemy.GetHP();
             _enemy.SetHP(num);
-            _flag = true;
         }
 
         protected override void SelectOptionThree()
@@ -48,13 +46,11 @@ namespace RPG.Screens
             {
                 _player.HP -= 2;
             }
-            _flag = true;
-        }
+        } 
 
         protected override void SelectOptionFour()
         {
             _player.guard = true;
-            _flag = true;
         }
     }
 }
