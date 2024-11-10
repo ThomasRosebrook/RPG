@@ -11,7 +11,7 @@ namespace RPG
 {
     public class Slime : Enemy
     {
-        private ContentManager _content;
+        
         public Slime()
         {
             HP = 50;
@@ -33,7 +33,7 @@ namespace RPG
 
         public override void LoadContent(ContentManager content)
         {
-            _content.Load<Texture2D>("Slime");
+            content.Load<Texture2D>("Slime");
         }
     }
 }

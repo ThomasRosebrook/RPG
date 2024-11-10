@@ -14,7 +14,6 @@ namespace RPG
 {
     public class Bat : Enemy
     {
-        private ContentManager _content;
 
         private Texture2D _texture;
         

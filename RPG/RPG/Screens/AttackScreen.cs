@@ -12,30 +12,49 @@ namespace RPG.Screens
 {
     public class AttackScreen : BottomMenu
     {
-        public AttackScreen() : base("Physical", "Magic", "Bribe", "Other")
+        Player _player;
+        Enemy _enemy;
+        bool _flag;
+        public AttackScreen(Player player, Enemy enemy, bool flag) : base("Physical", "Magic", "Bribe", "Other")
         {
-
+            _player = player;
+            _enemy = enemy;
         }
 
 
         protected override void SelectOptionOne()
+        
         {
-
+            int HP = _enemy.GetHP();
+            int num = _enemy.GetHP() - _player.strength; 
+            _enemy.SetHP(num);
+            _flag = true;
         }
 
         protected override void SelectOptionTwo()
         {
-
+            int num = _player.magic - _enemy.GetHP();
+            _enemy.SetHP(num);
+            _flag = true;
         }
 
         protected override void SelectOptionThree()
         {
-
+            if (_player.money >= _enemy.GetMoney())
+            {
+                _enemy.SetHP(0);
+            }
+            else
+            {
+                _player.HP -= 2;
+            }
+            _flag = true;
         }
 
         protected override void SelectOptionFour()
         {
-
+            _player.guard = true;
+            _flag = true;
         }
     }
 }
