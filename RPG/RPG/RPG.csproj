@@ -26,6 +26,12 @@
     <Folder Include="Content\bin\DesktopGL\Content\" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Assests\Assests.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assests\main-title-friendly-town-fun-video-game-music-loop-256055-license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Content\Tilemap1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
