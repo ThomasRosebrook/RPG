@@ -19,3 +19,5 @@ Tilemap
 2
 d,15,7,Tutorial sign, ****. remember to remove this before the game goes live. 
 d,13,3,Tutorial Hut,(Closed)
+1
+b,5,5

@@ -147,7 +147,7 @@ namespace RPG.Screens
             spriteBatch.Begin();
             //ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
             _player.Draw(gameTime, spriteBatch);
-            _enemy.Draw(gameTime, spriteBatch);
+            _enemy.Draw(spriteBatch);
             spriteBatch.End();
         }
 

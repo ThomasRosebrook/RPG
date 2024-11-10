@@ -31,9 +31,9 @@ namespace RPG
 
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, new Rectangle(600, 350, 200, 200), Color.White);
+            spriteBatch.Draw(_texture, new Vector2(600,350), new Rectangle(0, 0, 200, 200), Color.White);
         }
 
         public override void LoadContent(ContentManager content)
