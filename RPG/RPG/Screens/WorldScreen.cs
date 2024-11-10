@@ -36,6 +36,13 @@ namespace RPG.Screens
 
         public static int CurrentTileMap = 4;
 
+        IInteractable interactable;
+        bool hasInteractable = false;
+
+        bool ChangeMap = false;
+
+        bool UnlockBossArea = true;
+
         public WorldScreen()
         {
 
@@ -59,7 +66,7 @@ namespace RPG.Screens
         {
             CurrentTileMap = map;
             tilemap = new Tilemap(tilemaps[CurrentTileMap]);
-            if (_content == null) tilemap.LoadContent(_content);
+            if (_content != null) tilemap.LoadContent(_content);
         }
 
         public override void Unload()
@@ -89,22 +96,49 @@ namespace RPG.Screens
 
             if (input.Space)
             {
-                ScreenManager.AddScreen(new DialogueBox("Dialogue", "Hello world!"));
-                //this.ExitScreen();
-            }
-            if (input.Enter)
-            {
-                if(InteractionCheck(player, input.Direction))
+                if (hasInteractable)
                 {
-                    //who knows
+
                 }
+                //ScreenManager.AddScreen(new DialogueBox("Dialogue", "Hello world!"));
+                //this.ExitScreen();
             }
 
             if (player.CanMove && (CollisionCheck(player, new Vector2(0, input.Direction.Y)) || CollisionCheck(player, new Vector2(input.Direction.X, 0))) && CollisionCheck(player, input.Direction))
             {
-                player.Move(input.Direction);
-            }
+                if (ChangeMap)
+                {
+                    if (input.Direction.X < 0 && (CurrentTileMap == 1 || CurrentTileMap == 7 || CurrentTileMap == 8))
+                    {
+                        player.Position = new Vector2(840, 7 * 60);
+                        SetTileMap(CurrentTileMap - 1);
+                    }
+                    else if (input.Direction.X > 0 && (CurrentTileMap == 0 || CurrentTileMap == 6 || (CurrentTileMap == 7 && UnlockBossArea)))
+                    {
+                        player.Position = new Vector2(60, 7 * 60);
+                        SetTileMap(CurrentTileMap + 1);
+                    }
+                    
+                    if (input.Direction.Y < 0 && (CurrentTileMap == 3 || CurrentTileMap == 6 || CurrentTileMap == 4 || CurrentTileMap == 7 || CurrentTileMap == 5 || CurrentTileMap == 8))
+                    {
+                        player.Position = new Vector2(7 * 60, 840);
+                        SetTileMap(CurrentTileMap - 3);
+                    }
+                    else if (input.Direction.Y > 0 && (CurrentTileMap == 0 || CurrentTileMap == 3 || CurrentTileMap == 1 || CurrentTileMap == 4 || CurrentTileMap == 2 || CurrentTileMap == 5))
+                    {
+                        player.Position = new Vector2(7 * 60, 0);
+                        SetTileMap(CurrentTileMap + 3);
+                    }
 
+                    ChangeMap = false;
+                }
+                else player.Move(input.Direction);
+            }
+            if (input.DirectionChanged && InteractionCheck(player, input.Direction))
+            {
+                hasInteractable = true;
+            }
+            else hasInteractable = false;
 
 
         }
@@ -119,15 +153,17 @@ namespace RPG.Screens
             
             if(tileFacing != -1) return !Array.Exists(collisions, element => element == tileFacing);
 
-            return false;
+            ChangeMap = true;
+            return true;
         }
+
         public bool InteractionCheck(Player p, Vector2 direction)
         {
-            int targetX = (int)p.Position.X / 60 + (int)direction.X;
-            int targetY = (int)p.Position.Y / 60 + (int)direction.Y;
+            Vector2 target = new Vector2((int)p.Position.X / 60 + (int)direction.X, (int)p.Position.Y / 60 + (int)direction.Y);
 
-            int tileFacing = tilemap.GetTile(targetX, targetY);
-            return interact.CanInteract(tileFacing);
+            interactable = tilemap.GetInteractable(target);
+            if (interactable == null) return false;
+            return true;
         }
 
         public override void Draw(GameTime gameTime)

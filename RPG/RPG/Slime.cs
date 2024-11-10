@@ -32,7 +32,7 @@ namespace RPG
 
         public override void LoadContent()
         {
-            _content.Load<Texture2D>("BatMonster");
+            //_content.Load<Texture2D>("BatMonster");
         }
     }
 }

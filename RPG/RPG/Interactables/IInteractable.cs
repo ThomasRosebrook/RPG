@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using RPG.ScreenManagement;
+using Microsoft.Xna.Framework.Graphics;
 using RPG.Screens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RPG.Interactables
 {
@@ -16,5 +11,7 @@ namespace RPG.Interactables
         public Vector2 GetPosition();
 
         public void Interact(WorldScreen screen);
+
+        public void DrawPopup(SpriteBatch spriteBatch, Vector2 position);
     }
 }

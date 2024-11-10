@@ -5,6 +5,7 @@ using RPG.Interactables;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace RPG
 {
@@ -36,7 +37,7 @@ namespace RPG
         /// </summary>
         string _filename;
 
-        public List<IInteractable> Interactables;
+        List<IInteractable> interactables = new List<IInteractable>();
 
 
         public Tilemap(string filename)
@@ -91,6 +92,9 @@ namespace RPG
 
             int postTilesIndex = 3 + _mapHeight;
 
+            return;
+            if (lines.Count() < postTilesIndex) return;
+
             int numInteractables = int.Parse(lines[postTilesIndex]);
 
             for (int i = 0; i < numInteractables; i++)
@@ -110,7 +114,7 @@ namespace RPG
 
                 }
 
-                if (interactable != null) Interactables.Add(interactable);
+                if (interactable != null) interactables.Add(interactable);
 
             }
         }
@@ -134,6 +138,15 @@ namespace RPG
                 return -1;
             }
             return _map[x, y];
+        }
+
+        public IInteractable GetInteractable(Vector2 position)
+        {
+            if (interactables.Count == 0 || position.X < 0 || position.X >= _mapWidth || position.Y < 0 || position.Y >= _mapHeight)
+            {
+                return null;
+            }
+            return interactables.Find(i => i.GetPosition() == position);
         }
     }
 }
