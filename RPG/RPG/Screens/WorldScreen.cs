@@ -60,9 +60,12 @@ namespace RPG.Screens
 
         public override void Activate()
         {
+            if (_content == null) _content = new ContentManager(ScreenManager.Game.Services, "Content");
+
+            MediaPlayer.Volume = 0.5f;
+
             battleTheme = _content.Load<Song>("FEARMONGER");
             towntheme = _content.Load<Song>("FriendlyTown");
-            if (_content == null) _content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             if (width <= 0) width = ScreenManager.GraphicsDevice.Viewport.Width;
             if (height <= 0) height = ScreenManager.GraphicsDevice.Viewport.Height;
