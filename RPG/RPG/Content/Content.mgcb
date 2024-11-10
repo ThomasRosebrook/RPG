@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Bat.png
 
-#begin BatMonster.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:BatMonster.png
-
 #begin BottomMenuBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -67,6 +55,12 @@
 /processorParam:TextureFormat=Color
 /build:DialogueBox.png
 
+#begin FEARMONGER.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FEARMONGER.wav
+
 #begin FireAttackSFX/EM_FIRE_CAST_01.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -96,6 +90,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:FireAttackSFX/EM_FIRE_LAUNCH_01.wav
+
+#begin FriendlyTown.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:FriendlyTown.mp3
 
 #begin Guard.png
 /importer:TextureImporter
@@ -138,12 +138,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:LightningAttackSFX/EM_LIGHT_LAUNCH_01.wav
-
-#begin Lucidv1.1/FEARMONGER.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Lucidv1.1/FEARMONGER.wav
 
 #begin MainCharacter.png
 /importer:TextureImporter

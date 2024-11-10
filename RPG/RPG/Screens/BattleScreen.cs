@@ -107,7 +107,7 @@ namespace RPG.Screens
 
         public override void Update(GameTime gameTime, bool unfocused, bool covered)
         {
-
+            _enemy.Update(gameTime);
             if (IsActive)
             { 
                 if (_player.HP >= 0 && _enemy.GetHP() >= 0)
@@ -151,36 +151,6 @@ namespace RPG.Screens
             _enemy.Draw(gameTime, spriteBatch);
             spriteBatch.End();
         }
-
-        /*public void PlayerTurn()
-        {
-            int num;
-            switch (_player.Action)
-            {
-                case TurnAction.Attack:
-                     num = _player.strength - _enemy.GetHP();
-                    _enemy.SetHP(num);
-                    break;
-                case TurnAction.Magic:
-                     num = _player.magic - _enemy.GetHP();
-                    _enemy.SetHP(num);
-                    break;
-                case TurnAction.Money:
-                    if (_player.money >= _enemy.GetMoney())
-                    {
-                        _enemy.SetHP(0);
-                    }
-                    else
-                    {
-                        _player.HP -= 2;
-                    }
-                    break;
-                case TurnAction.Guard:
-                    guarding = true;
-                    break;
-            }
-        }*/
-
         public void EnemyTurn()
         {
             int turn = _rand.Next(2);
