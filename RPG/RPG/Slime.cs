@@ -26,14 +26,14 @@ namespace RPG
 
         }
 
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
 
         }
 
-        public override void LoadContent()
+        public override void LoadContent(ContentManager content)
         {
-            _content.Load<Texture2D>("BatMonster");
+            _content.Load<Texture2D>("Slime");
         }
     }
 }

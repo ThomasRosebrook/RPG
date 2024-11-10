@@ -28,9 +28,9 @@ namespace RPG
 
         public TurnAction Action;
 
-        public void LoadContent()
+        public void LoadContent(ContentManager content)
         {
-            texture = _content.Load<Texture2D>("MainCharacterFight");
+            texture = content.Load<Texture2D>("MainCharacterFight");
         }
 
         public void Update(GameTime gameTime)
@@ -40,7 +40,7 @@ namespace RPG
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(texture, new Vector2(100, 450), Color.White);
         }
     }
 }

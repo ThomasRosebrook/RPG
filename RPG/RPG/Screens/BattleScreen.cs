@@ -30,6 +30,8 @@ namespace RPG.Screens
 
         private int _width = 900;
 
+        private Texture2D _background;
+
         private Vector2 _position;
 
         private Vector2 _enemyPosition;
@@ -71,8 +73,11 @@ namespace RPG.Screens
 
         public override void Activate()
         {
-            _player.LoadContent();
-            _enemy.LoadContent();
+            if (_content == null)
+                _content = new ContentManager(ScreenManager.Game.Services, "Content");
+            _player.LoadContent(_content);
+            _enemy.LoadContent(_content);
+            _background = _content.Load<Texture2D>("MissingTexture");
             
             base.Activate();
         }
@@ -82,7 +87,7 @@ namespace RPG.Screens
             base.Deactivate();
         }
 
-        public void Update()
+        public override void Update(GameTime gameTime)
         {
             if (_player.HP <= 0 && _enemy.GetHP() <= 0)
             {
@@ -91,6 +96,7 @@ namespace RPG.Screens
                 {
                     PlayerTurn();
                     whoTurn = Turn.Enemy;
+                    //ScreenManager.RemoveScreen()
                 }
                 else
                 {
@@ -104,10 +110,16 @@ namespace RPG.Screens
         {
             
             base.Draw(gameTime);
+            ScreenManager.SpriteBatch.Begin();
+            ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
+            _player.Draw(gameTime, ScreenManager.SpriteBatch);
+            _enemy.Draw(gameTime, ScreenManager.SpriteBatch);
+            ScreenManager.SpriteBatch.End();
         }
 
         public void PlayerTurn()
         {
+            ScreenManager.AddScreen(new AttackScreen());
             int num;
             switch (_player.Action)
             {

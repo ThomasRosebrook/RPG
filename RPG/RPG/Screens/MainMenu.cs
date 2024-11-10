@@ -54,6 +54,11 @@ namespace RPG.Screens
                 ScreenManager.AddScreen(new WorldScreen());
             }
 
+            if (input.Enter)
+            {
+                ScreenManager.AddScreen(new BattleScreen(new Player(), new Bat()));
+            }
+
         }
 
         public override void Draw(GameTime gameTime)

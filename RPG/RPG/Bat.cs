@@ -16,6 +16,7 @@ namespace RPG
     {
         private ContentManager _content;
 
+        private Texture2D _texture;
         
         public Bat()
         {
@@ -31,14 +32,14 @@ namespace RPG
 
         }
 
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(_texture, new Rectangle(600, 350, 200, 200), Color.White);
         }
 
-        public override void LoadContent()
+        public override void LoadContent(ContentManager content)
         {
-            _content.Load<Texture2D>("BatMonster");
+            _texture = content.Load<Texture2D>("BatMonster");
         }
 
         
