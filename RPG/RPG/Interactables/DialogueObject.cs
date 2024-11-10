@@ -35,7 +35,7 @@ namespace RPG.Interactables
 
         public void DrawPopup(SpriteBatch spriteBatch, Vector2 position)
         {
-            PixelFont.DrawString(spriteBatch, FontSize.Medium, position, Color.White, "Press SPACE to Interact");
+            PixelFont.DrawString(spriteBatch, FontSize.Small, position, Color.White, "Press SPACE to Interact");
         }
     }
 }
