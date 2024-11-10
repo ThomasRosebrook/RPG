@@ -9,10 +9,19 @@ Tilemap
 556,66,66,1156,1025,1025,1025,1092,1025,1025,1025,1160,66,1168,66
 66,66,66,310,309,66,556,1057,66,66,304,307,311,66,66
 66,623,309,373,233,622,623,1057,554,66,373,373,373,66,554
-622,233,372,44,373,149,622,1057,554,554,373,45,373,554,554
+622,233,372,44,373,149,622,1057,554,554,373,40,373,554,554
 66,622,622,1156,1025,1025,1025,1092,1025,1025,1025,1160,554,554,554
 66,66,304,308,309,66,66,1057,66,66,309,308,311,66,66
 66,66,373,373,372,66,66,1057,66,66,374,373,373,66,66
-556,556,372,41,373,556,556,1057,66,1316,373,40,374,66,66
+556,556,372,41,373,556,556,1057,66,1316,373,45,374,66,66
 66,66,556,1156,1025,1025,1025,1092,1025,1025,1025,1160,66,66,66
 66,556,556,556,66,556,556,1057,66,66,66,66,66,66,66
+d,7,1,Castle Castle,Home to the best walls on this screen!!!
+d,4,5,Door #5,The door appears to be painted onto a wall.
+d,4,9,Door #3,A very unkept house
+d,6,9,Square Shaped cat,*meow*
+d,4,13,Door #1,You knock on the door, but no one is home
+d,12,5,Door #6,Locked 
+d,12,9,Door #4,A very well kept house. You can see a handyman inside moving tile to remodel the bathroom.
+d,12,13,Door #2,Real door #2 fans go here first.
+d,10,13,55 Gallon Drum of oil,This is a 55 gallon 5W-30 6 Certified oil drum. Every shop needs a 55-gallon 5W-30 drum, especially when it's filled with genuine motor oil. This premium-performance motor oil is API SN and GF 6 certified, which means it can be used as a substitute for older formulations of oil. With an innovative formula that's designed to resist corrosion, oxidation and rust, as well as provide superior protection for moving engine parts, reduces friction for less engine wear, high resistance to viscosity and thermal breakdown, helps reduce exhaust emissions. This 55-gallon drum of 5W-30 motor oil is exactly what you need in your shop or garage.
