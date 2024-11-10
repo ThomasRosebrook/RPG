@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:Bat.png
 
+#begin Bat1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Bat1.wav
+
+#begin Bat2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Bat2.wav
+
 #begin BottomMenuBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -37,6 +49,12 @@
 /processorParam:TextureFormat=Color
 /build:BottomMenuBG.png
 
+#begin BribeSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BribeSFX.wav
+
 #begin DialogueBox.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,6 +66,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:DialogueBox.png
+
+#begin Dragon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dragon.png
 
 #begin FEARMONGER.wav
 /importer:WavImporter
@@ -225,6 +255,24 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Slime.png
+
+#begin Slime1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Slime1.wav
+
+#begin Slime2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Slime2.wav
+
+#begin SwordSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SwordSFX.wav
 
 #begin Tilemap.png
 /importer:TextureImporter

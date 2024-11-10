@@ -33,6 +33,15 @@ namespace RPG
 
         protected int Luck { get; set; }
 
+        public bool InBattle { get; set; }
+
+        public Vector2 WorldPosition { get; set; }
+
+        public virtual Vector2 BattlePosition { get; set; } = new Vector2(100f, 100f);
+
+        public virtual bool IsAlive { get; set; } = true;
+
+
 
         public int GetHP()
         {

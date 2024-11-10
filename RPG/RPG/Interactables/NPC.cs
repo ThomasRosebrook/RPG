@@ -16,11 +16,15 @@ namespace RPG.Interactables
 
         Enemy enemy;
 
-        public bool IsAlive = true;
+        public bool IsAlive
+        {
+            get => enemy.IsAlive;
+        }
 
         public NPC(Enemy enemy, Vector2 position)
         {
             this.enemy = enemy;
+            enemy.WorldPosition = position;
             this.position = position;
         }
 
@@ -40,6 +44,7 @@ namespace RPG.Interactables
         public void SetPosition(Vector2 position)
         {
             this.position = position;
+            enemy.WorldPosition = position;
         }
 
         public void LoadContent(ContentManager content)

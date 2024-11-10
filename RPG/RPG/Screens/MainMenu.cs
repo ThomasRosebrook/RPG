@@ -51,10 +51,11 @@ namespace RPG.Screens
             if (input.Space)
             {
                 ScreenManager.AddScreen(new WorldScreen());
+                this.ExitScreen();
             }
             if (input.Enter)
             {
-                ScreenManager.AddScreen(new BattleScreen(new Player(), new Guard()));
+                ScreenManager.AddScreen(new BattleScreen(new Player(), new Bat()));
             }
         }
 

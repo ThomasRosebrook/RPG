@@ -12,7 +12,7 @@ namespace RPG.Screens
 {
     public class BottomMenu : GameScreen
     {
-        private ContentManager _content;
+        protected ContentManager _content;
 
         private int width;
         private int height;

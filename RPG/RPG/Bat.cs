@@ -15,6 +15,15 @@ namespace RPG
 {
     public class Bat : Enemy
     {
+
+        private Texture2D _spriteSheet;
+        private Rectangle[] _frames;
+        private int _currentFrame;
+        private double _animationTimer;
+        private double _frameTime = 0.2;
+
+        
+
         public Bat()
         {
             HP = 20;
@@ -36,8 +45,8 @@ namespace RPG
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(spriteSheet, new Vector2(100, 100), frames[currentFrame], Color.White);
-            
+            if (InBattle) spriteBatch.Draw(_spriteSheet, BattlePosition, _frames[_currentFrame], Color.White);
+            else spriteBatch.Draw(_spriteSheet, (WorldPosition - new Vector2(1, 1)) * 60, _frames[_currentFrame], Color.White);
         }
 
         public override void LoadContent(ContentManager content)
