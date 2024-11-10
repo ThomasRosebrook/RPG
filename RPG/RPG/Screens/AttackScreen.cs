@@ -14,10 +14,12 @@ namespace RPG.Screens
     {
         Player _player;
         Enemy _enemy;
-        public AttackScreen(Player player, Enemy enemy) : base("Physical", "Magic", "Bribe", "Other")
+        HandelChange _changeTurn;
+        public AttackScreen(Player player, Enemy enemy, HandelChange changeTurn) : base("Physical", "Magic", "Bribe", "Other")
         {
             _player = player;
             _enemy = enemy;
+            _changeTurn = changeTurn;
         }
 
 
@@ -27,12 +29,15 @@ namespace RPG.Screens
             int HP = _enemy.GetHP();
             int num = _enemy.GetHP() - _player.strength; 
             _enemy.SetHP(num);
+            _changeTurn.Invoke();
+
         }
 
         protected override void SelectOptionTwo()
         {
             int num = _player.magic - _enemy.GetHP();
             _enemy.SetHP(num);
+            _changeTurn.Invoke();
         }
 
         protected override void SelectOptionThree()
@@ -45,11 +50,13 @@ namespace RPG.Screens
             {
                 _player.HP -= 2;
             }
-        }
+            _changeTurn.Invoke();
+        } 
 
         protected override void SelectOptionFour()
         {
             _player.guard = true;
+            _changeTurn.Invoke();
         }
     }
 }
