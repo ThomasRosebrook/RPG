@@ -30,6 +30,9 @@ namespace RPG
 
         public TurnAction Action;
 
+        public int PositionX;
+        public int PositionY;
+
         public void LoadContent()
         {
             battleTexture = _content.Load<Texture2D>("MainCharacterFight");
@@ -50,5 +53,6 @@ namespace RPG
         {
             spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White);
         }
+
     }
 }
