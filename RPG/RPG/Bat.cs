@@ -20,6 +20,9 @@ namespace RPG
         private int _currentFrame;
         private double _animationTimer;
         private double _frameTime = 0.2;
+
+        
+
         public Bat()
         {
             HP = 20;
@@ -41,8 +44,8 @@ namespace RPG
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
-            
+            if (InBattle) spriteBatch.Draw(_spriteSheet, BattlePosition, _frames[_currentFrame], Color.White);
+            else spriteBatch.Draw(_spriteSheet, (WorldPosition - new Vector2(1, 1)) * 60, _frames[_currentFrame], Color.White);
         }
 
         public override void LoadContent(ContentManager content)

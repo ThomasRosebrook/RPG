@@ -52,6 +52,7 @@ namespace RPG.Screens
             if (input.Space)
             {
                 ScreenManager.AddScreen(new WorldScreen());
+                this.ExitScreen();
             }
 
             if (input.Enter)

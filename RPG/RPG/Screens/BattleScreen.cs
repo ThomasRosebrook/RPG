@@ -64,6 +64,7 @@ namespace RPG.Screens
 
         public BattleScreen(Player player, Enemy enemy)
         {
+            this.IsPopup = true;
             _player = player;
             _enemy = enemy;
             _changeTurn = FlipTurn;
@@ -102,7 +103,7 @@ namespace RPG.Screens
             _enemy.LoadContent(_content);
            spriteFont = _content.Load<SpriteFont>("PublicPixel");
 
-
+            _enemy.InBattle = true;
             base.Activate();
         }
 
@@ -149,12 +150,14 @@ namespace RPG.Screens
                         _player.strength += 5;
                         _player.magic += 5;
                         _player.money += _enemy.GetMoney();
+                        _enemy.InBattle = false;
+                        _enemy.IsAlive = false;
                         if (menu != null)
                         {
                             menu.ExitScreen();
                             menu = null;
                         }
-                        ExitScreen();
+                        this.ExitScreen();
                     }
                     timer += 1;
                     
@@ -165,8 +168,7 @@ namespace RPG.Screens
 
         public override void Draw(GameTime gameTime)
         {
-            
-            base.Draw(gameTime);
+            ScreenManager.Game.GraphicsDevice.Clear(new Color(32, 18, 8));
             var spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
             //spriteBatch.DrawString(spriteFont, $"{_player.HP}", new Vector2(450, 450), Color.White);
