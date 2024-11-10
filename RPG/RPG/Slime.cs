@@ -6,11 +6,6 @@ namespace RPG
 {
     public class Slime : Enemy
     {
-        private Texture2D _spriteSheet;
-        private Rectangle[] _frames;
-        private int _currentFrame;
-        private double _animationTimer;
-        private double _frameTime = 0.2;
         public Slime()
         {
             HP = 50;
@@ -38,7 +33,7 @@ namespace RPG
                 new Rectangle(60, 0, 60, 60) 
             };
         }
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
         }

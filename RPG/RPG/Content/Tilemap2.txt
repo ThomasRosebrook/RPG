@@ -18,4 +18,4 @@ Tilemap
 56,56,56,56,56,56,56,89,56,56,56,56,56,56,56
 1
 d,13,5,Chest room,The chests themselves are in fact full of more chests!
-
+0

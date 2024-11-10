@@ -39,6 +39,8 @@ namespace RPG
 
         List<IInteractable> interactables = new List<IInteractable>();
 
+        public List<NPC> NPCs = new List<NPC>();
+
 
         public Tilemap(string filename)
         {
@@ -116,6 +118,33 @@ namespace RPG
                 if (interactable != null) interactables.Add(interactable);
 
             }
+
+            int postInteractablesIndex = numInteractables + postTilesIndex + 1;
+            if (lines.Count() < postInteractablesIndex) return;
+
+            int numNPCs = int.Parse(lines[postInteractablesIndex]);
+
+            for (int i = 0; i < numNPCs; i++)
+            {
+                var line = lines[postInteractablesIndex + i + 1].Split(',');
+
+                NPC npc = null;
+
+                if (line[0] == "s")
+                {
+                    Enemy enemy = new Slime();
+                    npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                    //interactable = dObj;
+                }
+                else if (line[0] == "b")
+                {
+                    Enemy enemy = new Bat();
+                    npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                }
+
+                if (npc != null) NPCs.Add(npc);
+
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -146,6 +175,15 @@ namespace RPG
                 return null;
             }
             return interactables.Find(i => i.GetPosition() == position);
+        }
+
+        public NPC GetNPC(Vector2 position)
+        {
+            if (NPCs.Count == 0 || position.X < 0 || position.X >= _mapWidth || position.Y < 0 || position.Y >= _mapHeight)
+            {
+                return null;
+            }
+            return NPCs.Find(i => i.GetPosition() == position && i.IsAlive);
         }
     }
 }

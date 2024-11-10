@@ -14,12 +14,6 @@ namespace RPG
 {
     public class Bat : Enemy
     {
-
-        private Texture2D _spriteSheet;
-        private Rectangle[] _frames;
-        private int _currentFrame;
-        private double _animationTimer;
-        private double _frameTime = 0.2;
         public Bat()
         {
             HP = 20;
@@ -38,7 +32,8 @@ namespace RPG
                 _animationTimer = 0;
             }
         }
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
             

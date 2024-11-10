@@ -11,6 +11,16 @@ namespace RPG
 {
     public abstract class Enemy
     {
+        protected Texture2D _spriteSheet { get; set; }
+
+        protected Rectangle[] _frames { get; set; }
+
+        protected int _currentFrame { get; set; }
+
+        protected const double _frameTime = 0.2;
+
+        protected double _animationTimer { get; set; }
+
         protected int HP { get; set; }
 
         protected int Strength { get; set; }
@@ -54,7 +64,7 @@ namespace RPG
         public abstract void Update(GameTime gameTime);
         public abstract void LoadContent(ContentManager content);
 
-        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
+        public abstract void Draw(SpriteBatch spriteBatch);
         
     }
 }

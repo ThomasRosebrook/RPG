@@ -24,6 +24,8 @@ namespace RPG.Screens
             Enemy
         };
 
+        SpriteFont spriteFont;
+
         private ContentManager _content;
 
         private Random _rand;
@@ -45,6 +47,10 @@ namespace RPG.Screens
         bool flag = false;
 
         Turn whoTurn = Turn.Player;
+
+        int timer = 0;
+
+        
 
         //private Texture2D Character;
 
@@ -94,8 +100,8 @@ namespace RPG.Screens
                 _content = new ContentManager(ScreenManager.Game.Services, "Content");
             _player.LoadContent(_content);
             _enemy.LoadContent(_content);
-           // ScreenManager.AddScreen(menu);
-            //_background = _content.Load<Texture2D>("MissingTexture");
+           spriteFont = _content.Load<SpriteFont>("PublicPixel");
+
 
             base.Activate();
         }
@@ -136,6 +142,23 @@ namespace RPG.Screens
 
                     }
                 }
+                else
+                {
+                    if (timer >= 40)
+                    {
+                        _player.strength += 5;
+                        _player.magic += 5;
+                        _player.money += _enemy.GetMoney();
+                        if (menu != null)
+                        {
+                            menu.ExitScreen();
+                            menu = null;
+                        }
+                        ExitScreen();
+                    }
+                    timer += 1;
+                    
+                }
             }
             
         }
@@ -146,11 +169,24 @@ namespace RPG.Screens
             base.Draw(gameTime);
             var spriteBatch = ScreenManager.SpriteBatch;
             spriteBatch.Begin();
+            //spriteBatch.DrawString(spriteFont, $"{_player.HP}", new Vector2(450, 450), Color.White);
+            //spriteBatch.DrawString(spriteFont, $"{_enemy.GetHP()}", new Vector2(450, 350), Color.White);
             //ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
             _player.Draw(gameTime, spriteBatch);
-            _enemy.Draw(gameTime, spriteBatch);
+            if (_enemy.GetHP() >= 0)
+            {
+                _enemy.Draw(spriteBatch);
+            }
+            else
+            {
+                spriteBatch.DrawString(spriteFont, "YOU WIN!!!!", new Vector2(450, 450), Color.White);
+            }
+            
             spriteBatch.End();
         }
+
+    
+
         public void EnemyTurn()
         {
             int turn = _rand.Next(2);
