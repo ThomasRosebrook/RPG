@@ -51,6 +51,7 @@ namespace RPG
         {
             return Luck;
         }
+        public abstract void Update(GameTime gameTime);
         public abstract void LoadContent(ContentManager content);
 
         public abstract void Draw(SpriteBatch spriteBatch);

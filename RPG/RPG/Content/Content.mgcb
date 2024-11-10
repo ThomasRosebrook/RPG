@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin BatMonster.png
+#begin Bat.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:BatMonster.png
+/build:Bat.png
 
 #begin BottomMenuBG.png
 /importer:TextureImporter
@@ -48,6 +48,114 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:DialogueBox.png
+
+#begin FEARMONGER.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FEARMONGER.wav
+
+#begin FireAttackSFX/EM_FIRE_CAST_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_CAST_01.wav
+
+#begin FireAttackSFX/EM_FIRE_CAST_02.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_CAST_02.wav
+
+#begin FireAttackSFX/EM_FIRE_HOLD_4s.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_HOLD_4s.wav
+
+#begin FireAttackSFX/EM_FIRE_IMPACT_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_IMPACT_01.wav
+
+#begin FireAttackSFX/EM_FIRE_LAUNCH_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_LAUNCH_01.wav
+
+#begin FriendlyTown.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:FriendlyTown.mp3
+
+#begin Guard.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Guard.png
+
+#begin LightningAttackSFX/EM_LIGHT_CAST_01_L.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_CAST_01_L.wav
+
+#begin LightningAttackSFX/EM_LIGHT_CAST_02_S.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_CAST_02_S.wav
+
+#begin LightningAttackSFX/EM_LIGHT_HOLD_5s.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_HOLD_5s.wav
+
+#begin LightningAttackSFX/EM_LIGHT_IMPACT_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_IMPACT_01.wav
+
+#begin LightningAttackSFX/EM_LIGHT_LAUNCH_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_LAUNCH_01.wav
+
+#begin MainCharacter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MainCharacter.png
+
+#begin MainCharacterCombat.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MainCharacterCombat.png
 
 #begin MainCharacterFight.png
 /importer:TextureImporter
