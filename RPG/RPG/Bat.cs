@@ -13,10 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace RPG
 {
     public class Bat : Enemy
-    {
-        private ContentManager _content;
-
-        
+    {        
         public Bat()
         {
             HP = 20;

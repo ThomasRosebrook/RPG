@@ -11,7 +11,6 @@ namespace RPG
 {
     public class Slime : Enemy
     {
-        private ContentManager _content;
         public Slime()
         {
             HP = 50;
