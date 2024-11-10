@@ -1,4 +1,5 @@
-﻿  using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using RPG.ScreenManagement;
 using RPG.Screens;
 using System;
@@ -30,6 +31,11 @@ namespace RPG.Interactables
         public void SetPosition(Vector2 position)
         {
             this.position = position;
+        }
+
+        public void DrawPopup(SpriteBatch spriteBatch, Vector2 position)
+        {
+            PixelFont.DrawString(spriteBatch, FontSize.Medium, position, Color.White, "Press SPACE to Interact");
         }
     }
 }
