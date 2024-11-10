@@ -46,6 +46,8 @@ namespace RPG.Screens
 
         Turn whoTurn = Turn.Player;
 
+        
+
         //private Texture2D Character;
 
         //private Texture2D EnemySkin;
@@ -122,15 +124,17 @@ namespace RPG.Screens
                         if (menu.test == true)
                         {
                             menu.ExitScreen();
-                            _changeTurn.Invoke();
+                            FlipTurn();
+                            //_changeTurn.Invoke();
                         }
                         //PlayerTurn();
 
                     }
                     else if (whoTurn == Turn.Enemy)
                     {
-                        EnemyTurn();
-                        _changeTurn.Invoke();
+                        //EnemyTurn();
+                        FlipTurn();
+                        //_changeTurn.Invoke();
 
                     }
                 }
@@ -142,8 +146,10 @@ namespace RPG.Screens
         {
             
             base.Draw(gameTime);
-            ScreenManager.SpriteBatch.Begin();
+            var spriteBatch = ScreenManager.SpriteBatch;
+            spriteBatch.Begin();
             //ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
+            spriteBatch.DrawString(Publi)
             _player.Draw(gameTime, ScreenManager.SpriteBatch);
             _enemy.Draw(gameTime, ScreenManager.SpriteBatch);
             ScreenManager.SpriteBatch.End();
