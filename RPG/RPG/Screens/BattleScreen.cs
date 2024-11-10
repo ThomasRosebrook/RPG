@@ -202,9 +202,11 @@ namespace RPG.Screens
                     {
                         _player.HP -= _enemy.GetStrength();
                     }
+                    _enemy.attackSound.Play();
                     break;
                 case 1:
                     _player.HP -= _enemy.GetMagic();
+                    _enemy.magicSound.Play();
                     break;
             }
 

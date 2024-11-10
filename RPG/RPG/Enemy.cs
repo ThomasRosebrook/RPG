@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,15 +12,16 @@ namespace RPG
 {
     public abstract class Enemy
     {
-        protected Texture2D _spriteSheet { get; set; }
+        public SoundEffect attackSound { get; set; }
+        public SoundEffect magicSound { get; set; }
+        protected Texture2D spriteSheet { get; set; }
+        protected Rectangle[] frames { get; set; }
 
-        protected Rectangle[] _frames { get; set; }
+        protected int currentFrame { get; set; }
 
-        protected int _currentFrame { get; set; }
+        protected const double frameTime = 0.2;
 
-        protected const double _frameTime = 0.2;
-
-        protected double _animationTimer { get; set; }
+        protected double animationTimer { get; set; }
 
         protected int HP { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RPG
 {
@@ -17,17 +18,19 @@ namespace RPG
 
         public override void Update(GameTime gameTime)
         {
-            _animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (_animationTimer >= _frameTime)
+            animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (animationTimer >= frameTime)
             {
-                _currentFrame = (_currentFrame + 1) % _frames.Length;
-                _animationTimer = 0; 
+                currentFrame = (currentFrame + 1) % frames.Length;
+                animationTimer = 0; 
             }
         }
         public override void LoadContent(ContentManager content)
         {
-            _spriteSheet = content.Load<Texture2D>("Slime");
-            _frames = new Rectangle[]
+            attackSound = content.Load<SoundEffect>("Slime1");
+            magicSound = content.Load<SoundEffect>("Slime2");
+            spriteSheet = content.Load<Texture2D>("Slime");
+            frames = new Rectangle[]
             {
                 new Rectangle(0, 0, 60, 60),
                 new Rectangle(60, 0, 60, 60) 
@@ -35,7 +38,7 @@ namespace RPG
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
+            spriteBatch.Draw(spriteSheet, new Vector2(100, 100), frames[currentFrame], Color.White);
         }
     }
 }

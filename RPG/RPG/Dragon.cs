@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RPG
 {
@@ -22,23 +23,25 @@ namespace RPG
 
         public override void Update(GameTime gameTime)
         {
-            _animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (_animationTimer >= _frameTime)
+            animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (animationTimer >= frameTime)
             {
-                _currentFrame = (_currentFrame + 1) % _frames.Length;
-                _animationTimer = 0;
+                currentFrame = (currentFrame + 1) % frames.Length;
+                animationTimer = 0;
             }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
+            spriteBatch.Draw(spriteSheet, new Vector2(100, 100), frames[currentFrame], Color.White);
         }
 
         public override void LoadContent(ContentManager content)
         {
-            _spriteSheet = content.Load<Texture2D>("Guard");
-            _frames = new Rectangle[]
+            attackSound = content.Load<SoundEffect>("LightningAttackSFX/EM_1");
+            magicSound = content.Load<SoundEffect>("FireAttackSFX/EM_FIRE_LAUNCH_01");
+            spriteSheet = content.Load<Texture2D>("Dragon");
+            frames = new Rectangle[]
             {
                 new Rectangle(0, 0, 60, 60),
                 new Rectangle(60, 0, 60, 60)

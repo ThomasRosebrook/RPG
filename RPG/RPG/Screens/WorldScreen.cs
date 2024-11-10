@@ -244,9 +244,5 @@ namespace RPG.Screens
 
             spriteBatch.End();
         }
-        public void openDoor()
-        {
-
-        }
     }
 }
