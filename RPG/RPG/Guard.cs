@@ -14,12 +14,6 @@ namespace RPG
 {
     public class Guard : Enemy
     {
-
-        private Texture2D _spriteSheet;
-        private Rectangle[] _frames;
-        private int _currentFrame;
-        private double _animationTimer;
-        private double _frameTime = 0.2;
         public Guard()
         {
             HP = 20;

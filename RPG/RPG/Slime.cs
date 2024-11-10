@@ -6,11 +6,6 @@ namespace RPG
 {
     public class Slime : Enemy
     {
-        private Texture2D _spriteSheet;
-        private Rectangle[] _frames;
-        private int _currentFrame;
-        private double _animationTimer;
-        private double _frameTime = 0.2;
         public Slime()
         {
             HP = 50;

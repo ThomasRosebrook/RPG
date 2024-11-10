@@ -11,8 +11,6 @@ namespace RPG
 {
     public class Dragon : Enemy
     {
-        private Texture2D _texture;
-
         public Dragon()
         {
             HP = 200;
@@ -24,17 +22,27 @@ namespace RPG
 
         public override void Update(GameTime gameTime)
         {
-
+            _animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (_animationTimer >= _frameTime)
+            {
+                _currentFrame = (_currentFrame + 1) % _frames.Length;
+                _animationTimer = 0;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, new Rectangle(600, 350, 200, 200), Color.White);
+            spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
         }
 
         public override void LoadContent(ContentManager content)
         {
-            _texture = content.Load<Texture2D>("BatMonster");
+            _spriteSheet = content.Load<Texture2D>("Guard");
+            _frames = new Rectangle[]
+            {
+                new Rectangle(0, 0, 60, 60),
+                new Rectangle(60, 0, 60, 60)
+            };
         }
     }
 }
