@@ -26,7 +26,6 @@ namespace RPG.ScreenManagement
         public bool Enter { get; private set; } = false;
 
         public bool DirectionChanged { get; private set; } = false;
-
         public Vector2 Direction { get; private set; }
 
         private Vector2 prevDirection = new Vector2(0, 0);
@@ -70,22 +69,22 @@ namespace RPG.ScreenManagement
 
             if (currentKeyboardState.IsKeyDown(Keys.Left) || currentKeyboardState.IsKeyDown(Keys.A))
             {
-                Direction = new Vector2(-time, 0);
+                Direction = new Vector2(-1, 0);
             }
 
             if (currentKeyboardState.IsKeyDown(Keys.Right) || currentKeyboardState.IsKeyDown(Keys.D))
             {
-                Direction += new Vector2(time, 0);
+                Direction += new Vector2(1, 0);
             }
 
             if (currentKeyboardState.IsKeyDown(Keys.Up) || currentKeyboardState.IsKeyDown(Keys.W))
             {
-                Direction += new Vector2(0, -time);
+                Direction += new Vector2(0, -1);
             }
 
             if (currentKeyboardState.IsKeyDown(Keys.Down) || currentKeyboardState.IsKeyDown(Keys.S))
             {
-                Direction += new Vector2(0, time);
+                Direction += new Vector2(0, 1);
             }
 
             if (Direction.X == 0 && Direction.Y == 0) Direction = currentGamePadState.ThumbSticks.Left * time * new Vector2(1, -1);
@@ -93,8 +92,6 @@ namespace RPG.ScreenManagement
             DirectionChanged = !(Direction.X == prevDirection.X && Direction.Y == prevDirection.Y);
 
             prevDirection = Direction;
-
-
         }
     }
 }
