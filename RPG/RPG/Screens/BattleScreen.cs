@@ -34,18 +34,9 @@ namespace RPG.Screens
 
         private int _height = 900;
 
-        private int _width = 900;
-
-        private Texture2D _background;
-
         private Vector2 _position;
 
         private Vector2 _enemyPosition;
-
-        bool guarding = false;
-
-        bool flag = false;
-
         Turn whoTurn = Turn.Player;
 
         int timer = 0;

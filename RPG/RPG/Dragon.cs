@@ -33,7 +33,8 @@ namespace RPG
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(spriteSheet, new Vector2(100, 100), frames[currentFrame], Color.White);
+            if (InBattle) spriteBatch.Draw(spriteSheet, BattlePosition, frames[currentFrame], Color.White);
+            else spriteBatch.Draw(spriteSheet, (WorldPosition - new Vector2(1, 1)) * 60, frames[currentFrame], Color.White);
         }
 
         public override void LoadContent(ContentManager content)

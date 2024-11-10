@@ -29,10 +29,6 @@ namespace RPG
         private double movementTimer = 0;
 
         public bool CanMove = true;
-
-        int width = 60;
-        int height = 60;
-
         public Vector2 Position { get; set; }
 
         public TurnAction Action;
