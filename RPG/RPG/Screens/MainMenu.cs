@@ -56,7 +56,7 @@ namespace RPG.Screens
 
             if (input.Enter)
             {
-                ScreenManager.AddScreen(new BattleScreen(new Player(), new Bat()));
+                ScreenManager.AddScreen(new BattleScreen(new Player(), new Slime()));
             }
 
         }
