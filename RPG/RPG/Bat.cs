@@ -15,8 +15,11 @@ namespace RPG
     public class Bat : Enemy
     {
 
-        private Texture2D _texture;
-        
+        private Texture2D _spriteSheet;
+        private Rectangle[] _frames;
+        private int _currentFrame;
+        private double _animationTimer;
+        private double _frameTime = 0.2;
         public Bat()
         {
             HP = 20;
@@ -26,19 +29,29 @@ namespace RPG
             Luck = 2;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-
+            _animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (_animationTimer >= _frameTime)
+            {
+                _currentFrame = (_currentFrame + 1) % _frames.Length;
+                _animationTimer = 0;
+            }
         }
-
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, new Rectangle(600, 350, 200, 200), Color.White);
+            spriteBatch.Draw(_spriteSheet, new Vector2(100, 100), _frames[_currentFrame], Color.White);
+            
         }
 
         public override void LoadContent(ContentManager content)
         {
-            _texture = content.Load<Texture2D>("BatMonster");
+            _spriteSheet = content.Load<Texture2D>("Bat");
+            _frames = new Rectangle[]
+            {
+                new Rectangle(0, 0, 60, 60),
+                new Rectangle(60, 0, 60, 60)
+            };
         }
 
         
