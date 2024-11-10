@@ -111,9 +111,5 @@ namespace RPG
             }
             return _map[x, y];
         }
-        public void getTile()
-        {
-
-        }
     }
 }
