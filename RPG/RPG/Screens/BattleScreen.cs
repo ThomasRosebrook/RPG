@@ -113,6 +113,7 @@ namespace RPG.Screens
 
         public override void Update(GameTime gameTime, bool unfocused, bool covered)
         {
+            _enemy.Update(gameTime);
             if (IsActive)
             { 
                 if (_player.HP >= 0 && _enemy.GetHP() >= 0)
