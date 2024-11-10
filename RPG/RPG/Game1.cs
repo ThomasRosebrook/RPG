@@ -20,7 +20,7 @@ namespace RPG
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            Window.Title = "RPG";
+            Window.Title = "THE RPG";
 
             _screenManager = new ScreenManager(this);
             Components.Add(_screenManager);

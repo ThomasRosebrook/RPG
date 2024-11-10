@@ -63,7 +63,7 @@ namespace RPG.Screens
 
             spriteBatch.Begin();
 
-            string currentText = "The Quest For RPG";
+            string currentText = "The RPG";
             Vector2 size = PixelFont.SizeOf(currentText, FontSize.Large);
             PixelFont.DrawString(spriteBatch, FontSize.Large, new Vector2(width / 2 - size.X / 2, 20), Color.White, currentText);
 
