@@ -109,7 +109,6 @@ namespace RPG.Screens
         {
             if (IsActive)
             { 
-                
                 if (_player.HP >= 0 && _enemy.GetHP() >= 0)
                 {
                     //int turn = _rand.Next(2);
@@ -120,7 +119,7 @@ namespace RPG.Screens
                             menu = new AttackScreen(_player, _enemy, _changeTurn);
                             ScreenManager.AddScreen(menu);
                         }
-                        if (menu.IsExiting)
+                        if (menu.IsExiting && menu.test == true)
                         {
                             menu.ExitScreen();
                             _changeTurn.Invoke();
