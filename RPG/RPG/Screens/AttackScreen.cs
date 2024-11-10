@@ -30,7 +30,7 @@ namespace RPG.Screens
             int HP = _enemy.GetHP();
             int num = _enemy.GetHP() - _player.strength; 
             _enemy.SetHP(num);
-            _changeTurn.Invoke();
+            //_changeTurn.Invoke();
             test = true;
 
         }
@@ -39,26 +39,29 @@ namespace RPG.Screens
         {
             int num = _player.magic - _enemy.GetHP();
             _enemy.SetHP(num);
-            _changeTurn.Invoke();
+            //_changeTurn.Invoke();
+            test = true;
         }
 
         protected override void SelectOptionThree()
         {
             if (_player.money >= _enemy.GetMoney())
             {
-                _enemy.SetHP(0);
+                _enemy.SetHP(-1);
             }
             else
             {
                 _player.HP -= 2;
             }
-            _changeTurn.Invoke();
+            //_changeTurn.Invoke();
+            test = true;
         } 
 
         protected override void SelectOptionFour()
         {
             _player.guard = true;
-            _changeTurn.Invoke();
+            //_changeTurn.Invoke();
+            test = true;
         }
     }
 }
