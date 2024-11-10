@@ -48,17 +48,14 @@ namespace RPG.Screens
             {
                 ScreenManager.Game.Exit();
             }
-
             if (input.Space)
             {
                 ScreenManager.AddScreen(new WorldScreen());
             }
-
             if (input.Enter)
             {
                 ScreenManager.AddScreen(new BattleScreen(new Player(), new Guard()));
             }
-
         }
 
         public override void Draw(GameTime gameTime)
