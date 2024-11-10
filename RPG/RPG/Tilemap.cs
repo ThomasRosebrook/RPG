@@ -92,7 +92,6 @@ namespace RPG
 
             int postTilesIndex = 3 + _mapHeight;
 
-            return;
             if (lines.Count() < postTilesIndex) return;
 
             int numInteractables = int.Parse(lines[postTilesIndex]);
