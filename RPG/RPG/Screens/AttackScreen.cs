@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Audio;
 
 namespace RPG.Screens
 {
@@ -16,6 +17,10 @@ namespace RPG.Screens
         Enemy _enemy;
         HandelChange _changeTurn;
         public bool test;
+        private SoundEffect sword;
+        private SoundEffect fire;
+        private SoundEffect bribe;
+
         public AttackScreen(Player player, Enemy enemy, HandelChange changeTurn) : base("Physical", "Magic", "Bribe", "Other")
         {
             _player = player;
@@ -27,16 +32,17 @@ namespace RPG.Screens
         protected override void SelectOptionOne()
         
         {
+            sword.Play();
             int HP = _enemy.GetHP();
             int num = _enemy.GetHP() - _player.strength; 
             _enemy.SetHP(num);
             _changeTurn.Invoke();
             test = true;
-
         }
 
         protected override void SelectOptionTwo()
         {
+            fire.Play();
             int num = _player.magic - _enemy.GetHP();
             _enemy.SetHP(num);
             _changeTurn.Invoke();
@@ -44,6 +50,7 @@ namespace RPG.Screens
 
         protected override void SelectOptionThree()
         {
+            bribe.Play();
             if (_player.money >= _enemy.GetMoney())
             {
                 _enemy.SetHP(0);
@@ -59,6 +66,14 @@ namespace RPG.Screens
         {
             _player.guard = true;
             _changeTurn.Invoke();
+        }
+
+        public override void Activate()
+        {
+            base.Activate();
+            bribe = _content.Load<SoundEffect>("BribeSFX");
+            sword = _content.Load<SoundEffect>("SwordSFX");
+            fire = _content.Load<SoundEffect>("FireAttackSFX/EM_Fire_Cast_02");
         }
     }
 }
