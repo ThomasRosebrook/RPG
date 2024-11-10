@@ -21,20 +21,25 @@ namespace RPG.Screens
         private SoundEffect fire;
         private SoundEffect bribe;
 
-        public AttackScreen(Player player, Enemy enemy, HandelChange changeTurn) : base("Physical", "Magic", "Bribe", "Other")
+        public AttackScreen(Player player, Enemy enemy, HandelChange changeTurn) : base("Physical", "Magic", "Bribe", "Shield")
         {
             _player = player;
             _enemy = enemy;
             _changeTurn = changeTurn;
         }
 
+        public override void Update(GameTime gameTime, bool unfocused, bool covered)
+        {
+            base.Update(gameTime, unfocused, covered);
+        }
 
         protected override void SelectOptionOne()
         
         {
             sword.Play();
-            int HP = _enemy.GetHP();
-            int num = _enemy.GetHP() - _player.strength; 
+            //int HP = _enemy.GetHP();
+            int damage = (RandomHelper.Next(0, 10) < _player.luck) ? (int)(_player.magic * 1.2) : _player.magic;
+            int num = _enemy.GetHP() - damage; 
             _enemy.SetHP(num);
             //_changeTurn.Invoke();
             test = true;
@@ -43,7 +48,8 @@ namespace RPG.Screens
         protected override void SelectOptionTwo()
         {
             fire.Play();
-            int num = _player.magic - _enemy.GetHP();
+            int damage = (RandomHelper.Next(0, 10) < _player.luck) ? (int)(_player.magic * 1.2) : _player.magic;
+            int num = _enemy.GetHP() - damage;
             _enemy.SetHP(num);
             //_changeTurn.Invoke();
             test = true;
@@ -55,6 +61,7 @@ namespace RPG.Screens
             if (_player.money >= _enemy.GetMoney())
             {
                 _enemy.SetHP(-1);
+                _enemy.Bribed = true;
             }
             else
             {

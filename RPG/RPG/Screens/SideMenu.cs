@@ -19,21 +19,23 @@ namespace RPG.Screens
 
         Texture2D background;
 
-        List<MenuItem> items;
+        protected List<MenuItem> items;
 
-        int selectedItem = 0;
+        protected int selectedItem = 0;
 
-        public SideMenu()
+        Player player;
+
+        public SideMenu(Player player)
         {
             this.IsPopup = true;
             items = new List<MenuItem>()
             {
-                new MenuItem("Save"),
+                new MenuItem("Back"),
                 new MenuItem("Stats"),
-                new MenuItem("Exit Game"),
-                new MenuItem("Back")
+                new MenuItem("Exit Game")
             };
             items[0].IsHovered = true;
+            this.player = player;
         }
 
         public override void Activate()
@@ -101,19 +103,18 @@ namespace RPG.Screens
             spriteBatch.End();
         }
 
-        private void SelectItem()
+        protected virtual void SelectItem()
         {
             switch (selectedItem)
             {
                 case 0:
+                    this.ExitScreen();
                     break;
                 case 1:
+                    ScreenManager.AddScreen(new StatScreen(player));
                     break;
                 case 2:
                     ScreenManager.Game.Exit();
-                    break;
-                case 3:
-                    this.ExitScreen();
                     break;
                 default:
                     break;

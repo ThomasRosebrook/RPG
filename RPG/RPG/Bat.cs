@@ -18,7 +18,7 @@ namespace RPG
         public Bat()
         {
             HP = 20;
-            Strength = 10;
+            Strength = 5;
             Magic = 10;
             Money = 2.00M;
             Luck = 2;

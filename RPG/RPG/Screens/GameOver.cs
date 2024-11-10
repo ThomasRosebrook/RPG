@@ -5,14 +5,14 @@ using RPG.ScreenManagement;
 
 namespace RPG.Screens
 {
-    public class MainMenu : GameScreen
+    public class GameOver : GameScreen
     {
         private ContentManager _content;
 
         private int width;
         private int height;
 
-        public MainMenu()
+        public GameOver()
         {
 
         }
@@ -50,24 +50,24 @@ namespace RPG.Screens
             }
             if (input.Space || input.Enter)
             {
-                ScreenManager.AddScreen(new WorldScreen());
+                ScreenManager.AddScreen(new MainMenu());
                 this.ExitScreen();
             }
         }
 
         public override void Draw(GameTime gameTime)
         {
-            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0);
+            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Maroon, 0, 0);
 
             var spriteBatch = ScreenManager.SpriteBatch;
 
             spriteBatch.Begin();
 
-            string currentText = "The Quest For RPG";
+            string currentText = "GAME OVER";
             Vector2 size = PixelFont.SizeOf(currentText, FontSize.Large);
             PixelFont.DrawString(spriteBatch, FontSize.Large, new Vector2(width / 2 - size.X / 2, 20), Color.White, currentText);
 
-            currentText = "Press SPACE to Begin";
+            currentText = "Continue?";
             size = PixelFont.SizeOf(currentText, FontSize.Medium);
             PixelFont.DrawString(spriteBatch, FontSize.Medium, new Vector2(width / 2 - size.X / 2, height / 2 - size.Y / 2), Color.White, currentText);
 

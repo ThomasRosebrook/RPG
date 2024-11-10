@@ -14,9 +14,9 @@ namespace RPG
     {
         public Dragon()
         {
-            HP = 200;
-            Strength = 30;
-            Magic = 10;
+            HP = 75;
+            Strength = 10;
+            Magic = 15;
             Money = 10000.00M;
             Luck = 5;
         }
@@ -39,7 +39,7 @@ namespace RPG
 
         public override void LoadContent(ContentManager content)
         {
-            attackSound = content.Load<SoundEffect>("LightningAttackSFX/EM_1");
+            attackSound = content.Load<SoundEffect>("LightningAttackSFX/EM_LIGHT_LAUNCH_01");
             magicSound = content.Load<SoundEffect>("FireAttackSFX/EM_FIRE_LAUNCH_01");
             spriteSheet = content.Load<Texture2D>("Dragon");
             frames = new Rectangle[]

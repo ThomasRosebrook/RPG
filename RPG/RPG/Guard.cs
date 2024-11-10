@@ -17,10 +17,10 @@ namespace RPG
     {
         public Guard()
         {
-            HP = 20;
-            Strength = 10;
-            Magic = 10;
-            Money = 2.00M;
+            HP = 50;
+            Strength = 15;
+            Magic = 5;
+            Money = (decimal)RandomHelper.Next(2,20);
             Luck = 2;
         }
 
@@ -41,8 +41,8 @@ namespace RPG
 
         public override void LoadContent(ContentManager content)
         {
-            attackSound = content.Load<SoundEffect>("Guard1");
-            magicSound = content.Load<SoundEffect>("Guard2");
+            attackSound = content.Load<SoundEffect>("Slime1");
+            magicSound = content.Load<SoundEffect>("Slime2");
             spriteSheet = content.Load<Texture2D>("Guard");
             frames = new Rectangle[]
             {

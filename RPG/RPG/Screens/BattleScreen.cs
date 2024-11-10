@@ -3,20 +3,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using RPG.ScreenManagement;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection.PortableExecutable;
-using System.Runtime.Versioning;
-//using System.Numerics;
 
 namespace RPG.Screens
 {
     public delegate void HandelChange();
     public class BattleScreen : GameScreen
     {
+        public EventHandler<EventArgs> BattleDone;
+
         private HandelChange _changeTurn;
         private enum Turn
         {
@@ -51,7 +45,10 @@ namespace RPG.Screens
 
         private Enemy _enemy;
 
-        
+        private HealthBar PlayerHealth;
+        private HealthBar EnemyHealth;
+
+        private bool BattleOver = false;
 
         public BattleScreen(Player player, Enemy enemy)
         {
@@ -64,7 +61,6 @@ namespace RPG.Screens
             _position = new Vector2(200, _height / 2);
             _enemyPosition = new Vector2(700, _height / 2);
 
-            
             int start = _rand.Next(2);
             if (start == 0)
             {
@@ -92,9 +88,13 @@ namespace RPG.Screens
                 _content = new ContentManager(ScreenManager.Game.Services, "Content");
             _player.LoadContent(_content);
             _enemy.LoadContent(_content);
-           spriteFont = _content.Load<SpriteFont>("PublicPixel");
+            spriteFont = _content.Load<SpriteFont>("PublicPixel");
+
+            EnemyHealth = new HealthBar(false, _enemy.GetHP());
+            PlayerHealth = new HealthBar(true, _player.HP);
 
             _enemy.InBattle = true;
+            _player.InBattle = true;
             base.Activate();
         }
 
@@ -105,11 +105,14 @@ namespace RPG.Screens
 
         public override void Update(GameTime gameTime, bool unfocused, bool covered)
         {
-            _enemy.Update(gameTime);
             if (IsActive)
             { 
                 if (_player.HP >= 0 && _enemy.GetHP() >= 0)
                 {
+                    _enemy.Update(gameTime);
+
+                    PlayerHealth.UpdateHealth(_player.HP);
+                    EnemyHealth.UpdateHealth(_enemy.GetHP());
                     //int turn = _rand.Next(2);
                     if (whoTurn == Turn.Player)
                     {
@@ -136,22 +139,33 @@ namespace RPG.Screens
                 }
                 else
                 {
+                    BattleOver = true;
                     if (timer >= 40)
                     {
-                        _player.strength += 5;
-                        _player.magic += 5;
-                        _player.money += _enemy.GetMoney();
+                        if (_player.HP > 0)
+                        {
+                            _player.strength += RandomHelper.Next(3, 7);
+                            _player.magic += RandomHelper.Next(3, 7);
+                            _player.luck += RandomHelper.Next(0, 1);
+                            if (!_enemy.Bribed) _player.money += _enemy.GetMoney();
+                            _player.HP = _player.MAX_HP;
+                            if (_enemy.GetHP() <= 0) _enemy.IsAlive = false;
+                        }
+                        
                         _enemy.InBattle = false;
-                        _enemy.IsAlive = false;
+                        _player.InBattle = false;
+                        
                         if (menu != null)
                         {
                             menu.ExitScreen();
                             menu = null;
                         }
+                        BattleDone?.Invoke(this, new EventArgs());
                         this.ExitScreen();
+
                     }
                     timer += 1;
-                    
+                    if (_player.HP <= 0) timer = 40;
                 }
             }
             
@@ -165,12 +179,15 @@ namespace RPG.Screens
             //spriteBatch.DrawString(spriteFont, $"{_player.HP}", new Vector2(450, 450), Color.White);
             //spriteBatch.DrawString(spriteFont, $"{_enemy.GetHP()}", new Vector2(450, 350), Color.White);
             //ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
-            _player.Draw(gameTime, spriteBatch);
-            if (_enemy.GetHP() >= 0)
+            if (!BattleOver)
             {
+                _player.Draw(gameTime, spriteBatch);
                 _enemy.Draw(spriteBatch);
+                
+                EnemyHealth.Draw(spriteBatch);
+                PlayerHealth.Draw(spriteBatch);
             }
-            else
+            else if (_enemy.GetHP() <= 0 && _player.HP > 0)
             {
                 spriteBatch.DrawString(spriteFont, "YOU WIN!!!!", new Vector2(450, 450), Color.White);
             }

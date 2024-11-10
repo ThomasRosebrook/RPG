@@ -41,6 +41,8 @@ namespace RPG
 
         public virtual bool IsAlive { get; set; } = true;
 
+        public virtual bool Bribed { get; set; } = false;
+
 
 
         public int GetHP()

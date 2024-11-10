@@ -6,15 +6,17 @@ namespace RPG
 {
     public class Player
     {
-        public int HP = 50;
+        public int MAX_HP = 50; 
 
-        public int strength = 12;
+        public int HP { get; set; } = 50;
 
-        public int magic = 14;
+        public int strength = 5;
 
-        public decimal money = 30.00M;
+        public int magic = 5;
 
-        public int luck = 10;
+        public decimal money = 2.00M;
+
+        public int luck = 1;
 
         public bool guard;
 
@@ -30,6 +32,10 @@ namespace RPG
 
         public bool CanMove = true;
         public Vector2 Position { get; set; }
+
+        public bool InBattle = false;
+
+        public virtual Vector2 BattlePosition { get; set; } = new Vector2(500f, 550f);
 
         public TurnAction Action;
 
@@ -58,7 +64,9 @@ namespace RPG
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White, 0f, new Vector2(0,0), 1f, SpriteEffects.None, 1);
+            if (InBattle) spriteBatch.Draw(battleTexture, BattlePosition, new Rectangle(0, 0, 60, 60), Color.White, 0f, new Vector2(0,0), 1f, SpriteEffects.FlipHorizontally, 1);
+            else spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0, 60, 60), Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 1);
+            //spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White, 0f, new Vector2(0,0), 1f, SpriteEffects.None, 1);
         }
 
         public void Move (Vector2 direction)

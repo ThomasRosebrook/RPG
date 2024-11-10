@@ -12,6 +12,8 @@ namespace RPG.Interactables
 {
     public class NPC : IInteractable
     {
+        WorldScreen Screen;
+
         Vector2 position;
 
         Enemy enemy;
@@ -38,7 +40,21 @@ namespace RPG.Interactables
 
         public void Interact(WorldScreen screen)
         {
-            if (IsAlive) screen.ScreenManager.AddScreen(new BattleScreen(screen.player, enemy));
+            
+            if (IsAlive)
+            {
+                Screen = screen;
+                BattleScreen battle = new BattleScreen(screen.player, enemy);
+                screen.ScreenManager.AddScreen(battle);
+                battle.BattleDone += OnBattleDone;
+                screen.battleStart = true;
+            }
+            
+        }
+
+        void OnBattleDone(object sender, EventArgs e)
+        {
+            Screen.battleFinish = true;
         }
 
         public void SetPosition(Vector2 position)

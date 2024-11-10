@@ -119,32 +119,46 @@ namespace RPG
 
             }
 
-            int postInteractablesIndex = numInteractables + postTilesIndex + 1;
-            if (lines.Count() < postInteractablesIndex) return;
-
-            int numNPCs = int.Parse(lines[postInteractablesIndex]);
-
-            for (int i = 0; i < numNPCs; i++)
+            if (NPCs.Count == 0)
             {
-                var line = lines[postInteractablesIndex + i + 1].Split(',');
+                int postInteractablesIndex = numInteractables + postTilesIndex + 1;
+                if (lines.Count() < postInteractablesIndex) return;
 
-                NPC npc = null;
+                int numNPCs = int.Parse(lines[postInteractablesIndex]);
 
-                if (line[0] == "s")
+                for (int i = 0; i < numNPCs; i++)
                 {
-                    Enemy enemy = new Slime();
-                    npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
-                    //interactable = dObj;
-                }
-                else if (line[0] == "b")
-                {
-                    Enemy enemy = new Bat();
-                    npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
-                }
+                    var line = lines[postInteractablesIndex + i + 1].Split(',');
 
-                if (npc != null) NPCs.Add(npc);
+                    NPC npc = null;
 
+                    if (line[0] == "s")
+                    {
+                        Enemy enemy = new Slime();
+                        npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                        //interactable = dObj;
+                    }
+                    else if (line[0] == "b")
+                    {
+                        Enemy enemy = new Bat();
+                        npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                    }
+                    else if (line[0] == "g")
+                    {
+                        Enemy enemy = new Guard();
+                        npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                    }
+                    else if (line[0] == "d")
+                    {
+                        Enemy enemy = new Dragon();
+                        npc = new NPC(enemy, new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                    }
+
+                    if (npc != null) NPCs.Add(npc);
+
+                }
             }
+            
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

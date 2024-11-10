@@ -19,4 +19,5 @@ Tilemap
 2
 d,2,4,Trio of rocks,"Move along pal, nothing to see here."
 d,10,10,Oasis shop,(Out to collect more desert)
-0
+1
+s,4,7

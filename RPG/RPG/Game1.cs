@@ -48,6 +48,7 @@ namespace RPG
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PixelFont.LoadFonts(Content);
+            HealthBar.InitializeTextures(Content);
             // TODO: use this.Content to load your game content here
         }
 
