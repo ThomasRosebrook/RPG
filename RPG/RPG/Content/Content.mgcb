@@ -13,3 +13,182 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Bat.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bat.png
+
+#begin Content.mgcb
+/importer:
+/processor:
+/build:Content.mgcb
+
+#begin FireAttackSFX/EM_FIRE_CAST_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_CAST_01.wav
+
+#begin FireAttackSFX/EM_FIRE_CAST_02.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_CAST_02.wav
+
+#begin FireAttackSFX/EM_FIRE_HOLD_4s.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_HOLD_4s.wav
+
+#begin FireAttackSFX/EM_FIRE_IMPACT_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_IMPACT_01.wav
+
+#begin FireAttackSFX/EM_FIRE_LAUNCH_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireAttackSFX/EM_FIRE_LAUNCH_01.wav
+
+#begin Fireball.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Fireball.png
+
+#begin Guard.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Guard.png
+
+#begin Lightning.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Lightning.png
+
+#begin LightningAttackSFX/EM_LIGHT_CAST_01_L.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_CAST_01_L.wav
+
+#begin LightningAttackSFX/EM_LIGHT_CAST_02_S.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_CAST_02_S.wav
+
+#begin LightningAttackSFX/EM_LIGHT_HOLD_5s.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_HOLD_5s.wav
+
+#begin LightningAttackSFX/EM_LIGHT_IMPACT_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_IMPACT_01.wav
+
+#begin LightningAttackSFX/EM_LIGHT_LAUNCH_01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LightningAttackSFX/EM_LIGHT_LAUNCH_01.wav
+
+#begin Lucidv1.1/Crossing The Depths Of Sorrow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Lucidv1.1/Crossing The Depths Of Sorrow.wav
+
+#begin Lucidv1.1/Delve Within The Soul.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Lucidv1.1/Delve Within The Soul.wav
+
+#begin Lucidv1.1/Dreamer's Domain.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Lucidv1.1/Dreamer's Domain.wav
+
+#begin Lucidv1.1/FEARMONGER.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Lucidv1.1/FEARMONGER.wav
+
+#begin Lucidv1.1/Soaring In Ambition.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Lucidv1.1/Soaring In Ambition.wav
+
+#begin MainCharacter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MainCharacter.png
+
+#begin MainCharacterCombat.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MainCharacterCombat.png
+
+#begin Slime.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Slime.png
+
