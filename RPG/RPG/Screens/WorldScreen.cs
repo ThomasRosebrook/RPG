@@ -34,9 +34,12 @@ namespace RPG.Screens
             "Tilemap9.txt"
         };
 
-        public static int CurrentTileMap = 4;
+        public static int CurrentTileMap = 7;
 
-        IInteractable interactable;
+        IInteractable interactable1 = null;
+        IInteractable interactable2 = null;
+        IInteractable interactable3 = null;
+        IInteractable interactable4 = null;
         bool hasInteractable = false;
 
         bool ChangeMap = false;
@@ -98,7 +101,10 @@ namespace RPG.Screens
             {
                 if (hasInteractable)
                 {
-
+                    if (interactable1 != null) interactable1.Interact(this);
+                    else if (interactable2 != null) interactable2.Interact(this);
+                    else if (interactable3 != null) interactable3.Interact(this);
+                    else if (interactable4 != null) interactable4.Interact(this);
                 }
                 //ScreenManager.AddScreen(new DialogueBox("Dialogue", "Hello world!"));
                 //this.ExitScreen();
@@ -134,13 +140,7 @@ namespace RPG.Screens
                 }
                 else player.Move(input.Direction);
             }
-            if (input.DirectionChanged && InteractionCheck(player, input.Direction))
-            {
-                hasInteractable = true;
-            }
-            else hasInteractable = false;
-
-
+            if (input.DirectionChanged) hasInteractable = InteractionCheck(player);
         }
         public bool CollisionCheck(Player p, Vector2 direction)
         {
@@ -157,12 +157,13 @@ namespace RPG.Screens
             return true;
         }
 
-        public bool InteractionCheck(Player p, Vector2 direction)
+        public bool InteractionCheck(Player p)
         {
-            Vector2 target = new Vector2((int)p.Position.X / 60 + (int)direction.X, (int)p.Position.Y / 60 + (int)direction.Y);
-
-            interactable = tilemap.GetInteractable(target);
-            if (interactable == null) return false;
+            interactable1 = tilemap.GetInteractable(new Vector2((int)p.Position.X / 60 + 2, (int)p.Position.Y / 60 + 1));
+            interactable2 = tilemap.GetInteractable(new Vector2((int)p.Position.X / 60, (int)p.Position.Y / 60 + 1));
+            interactable3 = tilemap.GetInteractable(new Vector2((int)p.Position.X / 60 + 1, (int)p.Position.Y / 60 + 2));
+            interactable4 = tilemap.GetInteractable(new Vector2((int)p.Position.X / 60 + 1, (int)p.Position.Y / 60));
+            if (interactable1 == null && interactable2 == null && interactable3 == null && interactable4 == null) return false;
             return true;
         }
 
@@ -177,9 +178,17 @@ namespace RPG.Screens
 
             player.Draw(gameTime, spriteBatch);
 
+            if (hasInteractable)
+            {
+                if (interactable1 != null) interactable1.DrawPopup(spriteBatch, (interactable1.GetPosition() + new Vector2(-3, -1.5f)) * 60);
+                if (interactable2 != null) interactable2.DrawPopup(spriteBatch, (interactable2.GetPosition() + new Vector2(-3, -1.5f)) * 60);
+                if (interactable3 != null) interactable3.DrawPopup(spriteBatch, (interactable3.GetPosition() + new Vector2(-3, -1.5f)) * 60);
+                if (interactable4 != null) interactable4.DrawPopup(spriteBatch, (interactable4.GetPosition() + new Vector2(-3, -1.5f)) * 60);
+            }
+
             string currentText = "ESC to open Menu";
             Vector2 size = PixelFont.SizeOf(currentText, FontSize.Medium);
-            PixelFont.DrawString(spriteBatch, FontSize.Medium, new Vector2(width / 2 - size.X / 2, height - size.Y), Color.White, currentText);
+            PixelFont.DrawString(spriteBatch, FontSize.Medium, new Vector2(width / 2 - size.X / 2, height - size.Y - 10), Color.White, currentText);
 
             spriteBatch.End();
         }

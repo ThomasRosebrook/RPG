@@ -16,5 +16,6 @@ Tilemap
 56,161,161,162,163,162,162,1129,162,161,162,162,315,315,56
 56,161,163,162,161,161,161,1129,162,163,162,315,315,315,56
 56,56,56,56,56,56,56,89,56,56,56,56,56,56,56
-8d,13,5,Chest room,The chests themselves are in fact full of more chests!
+1
+d,13,5,Chest room,The chests themselves are in fact full of more chests!
 
