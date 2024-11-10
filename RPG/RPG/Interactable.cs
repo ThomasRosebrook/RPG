@@ -21,7 +21,7 @@ namespace RPG
         public int trashcanOrPotInTheRestaruntThing = 52;
         public int[] tombstones = new int[] { 181, 182, 183, 214, 215, 216 };
         public int whiteTent = 645;
-        public int[] allInteractables = new int[] { 645, 181, 182, 183, 214, 215, 216, 52, 1478, 40, 41, 42, 43, 44, 45, 106, 107, 108, 109, 110, 111, 116, 149, 251, 284 }
+        public int[] allInteractables = new int[] { 645, 181, 182, 183, 214, 215, 216, 52, 1478, 40, 41, 42, 43, 44, 45, 106, 107, 108, 109, 110, 111, 116, 149, 251, 284 };
         public bool CanInteract(int i)
         {
             if(Array.Exists(allInteractables, element => element == i)){

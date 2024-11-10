@@ -72,7 +72,7 @@ namespace RPG.Screens
         public override void Activate()
         {
             _player.LoadContent(_content);
-            _enemy.LoadContent();
+            _enemy.LoadContent(_content);
             
             base.Activate();
         }

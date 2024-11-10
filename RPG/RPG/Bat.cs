@@ -33,7 +33,7 @@ namespace RPG
 
         }
 
-        public override void LoadContent()
+        public override void LoadContent(ContentManager _content)
         {
             _content.Load<Texture2D>("BatMonster");
         }
