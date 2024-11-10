@@ -12,6 +12,7 @@ namespace RPG.Screens
 {
     public class AttackScreen : BottomMenu
     {
+        public bool test = false;
         Player _player;
         Enemy _enemy;
         HandelChange _changeTurn;
@@ -20,6 +21,7 @@ namespace RPG.Screens
             _player = player;
             _enemy = enemy;
             _changeTurn = changeTurn;
+     
         }
 
 
@@ -30,6 +32,7 @@ namespace RPG.Screens
             int num = _enemy.GetHP() - _player.strength; 
             _enemy.SetHP(num);
             _changeTurn.Invoke();
+            test = true;
 
         }
 
@@ -38,6 +41,7 @@ namespace RPG.Screens
             int num = _player.magic - _enemy.GetHP();
             _enemy.SetHP(num);
             _changeTurn.Invoke();
+            test = true;
         }
 
         protected override void SelectOptionThree()
@@ -51,12 +55,14 @@ namespace RPG.Screens
                 _player.HP -= 2;
             }
             _changeTurn.Invoke();
+            test = true;
         } 
 
         protected override void SelectOptionFour()
         {
             _player.guard = true;
             _changeTurn.Invoke();
+            test = true;
         }
     }
 }
