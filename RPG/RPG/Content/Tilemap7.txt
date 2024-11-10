@@ -23,3 +23,4 @@ d,3,15,Here lies Larry Williams,Passed 1433, Know for his love of cheese.
 d,6,12,*e** l*es Je**m* **r***gt*n,The text is to worn to read. You can only decipher the words (Greedy Grinner)
 d,7,14,Here lies Caleb Richards,He didn't have that dog in him. 
 d,13,5,Nuclear Fallout Shelter,(You never know when it could be usefull)
+0

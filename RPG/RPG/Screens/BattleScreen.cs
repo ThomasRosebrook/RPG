@@ -175,7 +175,7 @@ namespace RPG.Screens
             _player.Draw(gameTime, spriteBatch);
             if (_enemy.GetHP() >= 0)
             {
-                _enemy.Draw(gameTime, spriteBatch);
+                _enemy.Draw(spriteBatch);
             }
             else
             {
