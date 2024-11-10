@@ -28,6 +28,9 @@ namespace RPG
 
         public TurnAction Action;
 
+        public int PositionX;
+        public int PositionY;
+
         public void LoadContent()
         {
             texture = _content.Load<Texture2D>("MainCharacterFight");
@@ -42,5 +45,6 @@ namespace RPG
         {
 
         }
+
     }
 }

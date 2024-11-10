@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace RPG
 {
@@ -32,10 +33,12 @@ namespace RPG
         /// </summary>
         int[,] _map;
 
+
         /// <summary>
         /// the filename of the map file
         /// </summary>
         string _filename;
+
 
         public Tilemap(string filename)
         {
@@ -99,6 +102,18 @@ namespace RPG
                     spriteBatch.Draw(_tilesetTexture, new Vector2(x * _tileWidth, y * _tileHeight), _tiles[index], Color.White);
                 }
             }
+        }
+        public int GetTile(int x, int y)
+        {
+            if (x < 0 || x >= _mapWidth || y < 0 || y >= _mapHeight)
+            {
+                return -1;
+            }
+            return _map[x, y];
+        }
+        public void getTile()
+        {
+
         }
     }
 }
