@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.CompilerServices;
+using RPG.Interactables;
 
 namespace RPG.Screens
 {
@@ -20,7 +21,6 @@ namespace RPG.Screens
         private int height;
         private Player player;
         Tilemap tilemap;
-        private Interactable interact; 
         static List<string> tilemaps = new List<string>
         {
             "Tilemap1.txt",

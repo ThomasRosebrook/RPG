@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using RPG.Interactables;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
 
 namespace RPG
 {
@@ -38,6 +35,8 @@ namespace RPG
         /// the filename of the map file
         /// </summary>
         string _filename;
+
+        public List<IInteractable> Interactables;
 
 
         public Tilemap(string filename)
@@ -88,6 +87,31 @@ namespace RPG
                 {
                     _map[x, y] = int.Parse(mapLine[x]);
                 }
+            }
+
+            int postTilesIndex = 3 + _mapHeight;
+
+            int numInteractables = int.Parse(lines[postTilesIndex]);
+
+            for (int i = 0; i < numInteractables; i++)
+            {
+                var line = lines[postTilesIndex + i + 1].Split(',');
+
+                IInteractable interactable = null;
+
+                if (line[0] == "d")
+                {
+                    DialogueObject dObj = new DialogueObject(line[3], line[4]);
+                    dObj.SetPosition(new Vector2(float.Parse(line[1]), float.Parse(line[2])));
+                    interactable = dObj;
+                }
+                else if (line[0] == "o")
+                {
+
+                }
+
+                if (interactable != null) Interactables.Add(interactable);
+
             }
         }
 
