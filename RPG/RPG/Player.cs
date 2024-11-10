@@ -50,9 +50,9 @@ namespace RPG
             }
             else animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (movementTimer >= 100)
+            if (movementTimer >= 150)
             {
-                movementTimer -= 100;
+                movementTimer -= 150;
                 CanMove = true;
             }
             else if (CanMove == false) movementTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
