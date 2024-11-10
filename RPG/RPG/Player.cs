@@ -6,15 +6,17 @@ namespace RPG
 {
     public class Player
     {
-        public int HP;
+        public int HP = 50;
 
-        public int strength;
+        public int strength = 12;
 
-        public int magic;
+        public int magic = 14;
 
-        public decimal money;
+        public decimal money = 30.00M;
 
-        public int luck;
+        public int luck = 10;
+
+        public bool guard;
 
         private Texture2D battleTexture;
 

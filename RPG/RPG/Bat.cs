@@ -13,7 +13,10 @@ using Microsoft.Xna.Framework.Graphics;
 namespace RPG
 {
     public class Bat : Enemy
-    {        
+    {
+
+        private Texture2D _texture;
+        
         public Bat()
         {
             HP = 20;
@@ -28,14 +31,14 @@ namespace RPG
 
         }
 
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(_texture, new Rectangle(600, 350, 200, 200), Color.White);
         }
 
-        public override void LoadContent()
+        public override void LoadContent(ContentManager content)
         {
-            //_content.Load<Texture2D>("BatMonster");
+            _texture = content.Load<Texture2D>("BatMonster");
         }
 
         

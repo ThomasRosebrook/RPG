@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.PortableExecutable;
 using System.Runtime.Versioning;
+//using System.Numerics;
 
 namespace RPG.Screens
 {
@@ -26,15 +27,21 @@ namespace RPG.Screens
 
         private Random _rand;
 
+        private AttackScreen menu;
+
         private int _height = 900;
 
         private int _width = 900;
+
+        private Texture2D _background;
 
         private Vector2 _position;
 
         private Vector2 _enemyPosition;
 
         bool guarding = false;
+
+        bool flag = false;
 
         Turn whoTurn = Turn.Player;
 
@@ -58,6 +65,7 @@ namespace RPG.Screens
             _position = new Vector2(200, _height / 2);
             _enemyPosition = new Vector2(700, _height / 2);
 
+            
             int start = _rand.Next(2);
             if (start == 0)
             {
@@ -71,9 +79,13 @@ namespace RPG.Screens
 
         public override void Activate()
         {
+            if (_content == null)
+                _content = new ContentManager(ScreenManager.Game.Services, "Content");
             _player.LoadContent(_content);
-            _enemy.LoadContent();
-            
+            _enemy.LoadContent(_content);
+           // ScreenManager.AddScreen(menu);
+            //_background = _content.Load<Texture2D>("MissingTexture");
+
             base.Activate();
         }
 
@@ -82,31 +94,52 @@ namespace RPG.Screens
             base.Deactivate();
         }
 
-        public void Update()
+        public override void Update(GameTime gameTime, bool unfocused, bool covered)
         {
-            if (_player.HP <= 0 && _enemy.GetHP() <= 0)
+            if (IsActive)
             {
-                //int turn = _rand.Next(2);
-                if (whoTurn == Turn.Player)
+                
+                
+                if (_player.HP >= 0 && _enemy.GetHP() >= 0)
                 {
-                    PlayerTurn();
-                    whoTurn = Turn.Enemy;
-                }
-                else
-                {
-                    EnemyTurn();
-                    whoTurn = Turn.Player;
+                    //int turn = _rand.Next(2);
+                    if (whoTurn == Turn.Player)
+                    {
+                        if (menu == null)
+                        {
+                            menu = new AttackScreen(_player, _enemy, flag);
+                            ScreenManager.AddScreen(menu);
+                        }
+                        if (menu.IsExiting)
+                        {
+                            menu.ExitScreen();
+                            whoTurn = Turn.Enemy;
+                        }
+                        //PlayerTurn();
+
+                    }
+                    else if (whoTurn == Turn.Enemy)
+                    {
+                        EnemyTurn();
+                        whoTurn = Turn.Player;
+                    }
                 }
             }
+            
         }
 
         public override void Draw(GameTime gameTime)
         {
             
             base.Draw(gameTime);
+            ScreenManager.SpriteBatch.Begin();
+            //ScreenManager.SpriteBatch.Draw(_background, new Rectangle(650, 400, 120, 120), Color.Gray);
+            _player.Draw(gameTime, ScreenManager.SpriteBatch);
+            _enemy.Draw(gameTime, ScreenManager.SpriteBatch);
+            ScreenManager.SpriteBatch.End();
         }
 
-        public void PlayerTurn()
+        /*public void PlayerTurn()
         {
             int num;
             switch (_player.Action)
@@ -133,7 +166,7 @@ namespace RPG.Screens
                     guarding = true;
                     break;
             }
-        }
+        }*/
 
         public void EnemyTurn()
         {
@@ -142,7 +175,14 @@ namespace RPG.Screens
             switch (turn)
             {
                 case 0:
-                    _player.HP -= _enemy.GetStrength();
+                    if (_player.guard)
+                    {
+                        _player.HP -= _enemy.GetStrength() / 2;
+                    }
+                    else
+                    {
+                        _player.HP -= _enemy.GetStrength();
+                    }
                     break;
                 case 1:
                     _player.HP -= _enemy.GetMagic();
