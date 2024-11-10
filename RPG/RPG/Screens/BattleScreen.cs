@@ -14,9 +14,10 @@ using System.Runtime.Versioning;
 
 namespace RPG.Screens
 {
+    public delegate void HandelChange();
     public class BattleScreen : GameScreen
     {
-
+        private HandelChange _changeTurn;
         private enum Turn
         {
             Player,
@@ -59,7 +60,7 @@ namespace RPG.Screens
         {
             _player = player;
             _enemy = enemy;
-
+            _changeTurn = FlipTurn;
             _rand = new Random();
 
             _position = new Vector2(200, _height / 2);
@@ -76,7 +77,17 @@ namespace RPG.Screens
                 whoTurn = Turn.Enemy;
             }
         }
-
+        private void FlipTurn()
+        {
+            if (whoTurn == Turn.Player)
+            {
+                whoTurn = Turn.Enemy;
+            }
+            else
+            {
+                whoTurn = Turn.Player;
+            }
+        }
         public override void Activate()
         {
             if (_content == null)
@@ -106,13 +117,13 @@ namespace RPG.Screens
                     {
                         if (menu == null)
                         {
-                            menu = new AttackScreen(_player, _enemy, flag);
+                            menu = new AttackScreen(_player, _enemy, _changeTurn);
                             ScreenManager.AddScreen(menu);
                         }
                         if (menu.IsExiting)
                         {
                             menu.ExitScreen();
-                            whoTurn = Turn.Enemy;
+                            _changeTurn.Invoke();
                         }
                         //PlayerTurn();
 
@@ -120,7 +131,8 @@ namespace RPG.Screens
                     else if (whoTurn == Turn.Enemy)
                     {
                         EnemyTurn();
-                        
+                        _changeTurn.Invoke();
+
                     }
                 }
             }
