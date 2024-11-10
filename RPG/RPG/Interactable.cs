@@ -32,5 +32,21 @@ namespace RPG
                 return false;
             }
         }
+        public bool OpenDoor(int i, out int openDoorTile)
+        {
+
+            if (Array.Exists(brownDoors, element => element == i))
+            {
+                openDoorTile = openBrownDoor;
+                return true;
+            }
+            if (Array.Exists(redDoors, element => element == i))
+            {
+                openDoorTile = openRedDoor;
+                return true;
+            }
+            openDoorTile = -1;
+            return false;
+        }
     }
 }

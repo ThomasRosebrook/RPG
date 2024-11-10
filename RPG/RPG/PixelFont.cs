@@ -47,7 +47,6 @@ namespace RPG
                     return MediumFont;
             }
         }
-
         public static int CharsPerLine(int length, FontSize size)
         {
             switch (size)
@@ -63,7 +62,6 @@ namespace RPG
             }
         }
     }
-
     public enum FontSize
     {
         Small,
