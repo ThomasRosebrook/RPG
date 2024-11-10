@@ -93,7 +93,7 @@ namespace RPG.Screens
             }
 
 
-            if (CollisionCheck(player, input.Direction))
+            if (player.CanMove && CollisionCheck(player, input.Direction))
             {
                 player.Move(input.Direction);
             }

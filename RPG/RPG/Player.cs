@@ -24,6 +24,10 @@ namespace RPG
 
         private double animationTimer = 0;
 
+        private double movementTimer = 0;
+
+        public bool CanMove = true;
+
         int width = 60;
         int height = 60;
 
@@ -45,16 +49,25 @@ namespace RPG
                 animationIndex = (animationIndex == 1) ? 0 : 1;
             }
             else animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (movementTimer >= 100)
+            {
+                movementTimer -= 100;
+                CanMove = true;
+            }
+            else if (CanMove == false) movementTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White, 0f, new Vector2(width / 2, height / 2), 1f, SpriteEffects.None, 1);
+            spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White, 0f, new Vector2(0,0), 1f, SpriteEffects.None, 1);
         }
 
         public void Move (Vector2 direction)
         {
             Position += direction * 60;
+            CanMove = false;
+            movementTimer = 0;
         }
 
     }
