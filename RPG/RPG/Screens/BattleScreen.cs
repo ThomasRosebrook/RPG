@@ -71,7 +71,7 @@ namespace RPG.Screens
 
         public override void Activate()
         {
-            _player.LoadContent();
+            _player.LoadContent(_content);
             _enemy.LoadContent();
             
             base.Activate();

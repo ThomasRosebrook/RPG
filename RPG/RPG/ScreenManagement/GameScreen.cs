@@ -22,7 +22,7 @@ namespace RPG.ScreenManagement
 
         public virtual void Activate ()
         {
-
+            IsActive = true;
         }
 
         public virtual void Deactivate()

@@ -6,8 +6,6 @@ namespace RPG
 {
     public class Player
     {
-        private ContentManager _content;
-
         public int HP;
 
         public int strength;
@@ -26,14 +24,14 @@ namespace RPG
 
         private double animationTimer = 0;
 
+        int width = 60;
+        int height = 60;
+
         public Vector2 Position { get; set; }
 
         public TurnAction Action;
 
-        public int PositionX;
-        public int PositionY;
-
-        public void LoadContent()
+        public void LoadContent(ContentManager _content)
         {
             battleTexture = _content.Load<Texture2D>("MainCharacterFight");
             worldTexture = _content.Load<Texture2D>("Player");
@@ -41,9 +39,9 @@ namespace RPG
 
         public void Update(GameTime gameTime)
         {
-            if (animationTimer >= 5)
+            if (animationTimer >= 1)
             {
-                animationTimer -= 5;
+                animationTimer -= 1;
                 animationIndex = (animationIndex == 1) ? 0 : 1;
             }
             else animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
@@ -51,7 +49,12 @@ namespace RPG
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White);
+            spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White, 0f, new Vector2(width / 2, height / 2), 1f, SpriteEffects.None, 1);
+        }
+
+        public void Move (Vector2 direction)
+        {
+            Position += direction * 60;
         }
 
     }
