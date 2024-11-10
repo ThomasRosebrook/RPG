@@ -107,12 +107,13 @@ namespace RPG.Screens
                     {
                         if (menu == null)
                         {
-                            menu = new AttackScreen(_player, _enemy, flag);
+                            menu = new AttackScreen(_player, _enemy);
                             ScreenManager.AddScreen(menu);
                         }
                         if (menu.IsExiting)
                         {
                             menu.ExitScreen();
+                            menu = null;
                             whoTurn = Turn.Enemy;
                         }
                         //PlayerTurn();
