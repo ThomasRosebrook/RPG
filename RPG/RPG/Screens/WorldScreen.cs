@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace RPG.Screens
 {
@@ -33,7 +34,7 @@ namespace RPG.Screens
             "Tilemap9.txt"
         };
 
-        public static int CurrentTileMap = 7;
+        public static int CurrentTileMap = 4;
 
         public WorldScreen()
         {
@@ -99,7 +100,7 @@ namespace RPG.Screens
                 }
             }
 
-            if (CollisionCheck(player, input.Direction))
+            if (player.CanMove && (CollisionCheck(player, new Vector2(0, input.Direction.Y)) || CollisionCheck(player, new Vector2(input.Direction.X, 0))) && CollisionCheck(player, input.Direction))
             {
                 player.Move(input.Direction);
             }
@@ -109,6 +110,8 @@ namespace RPG.Screens
         }
         public bool CollisionCheck(Player p, Vector2 direction)
         {
+            if (direction.X == 0 && direction.Y == 0) return false;
+
             int targetX = (int)p.Position.X / 60 + (int)direction.X;
             int targetY = (int)p.Position.Y / 60 + (int)direction.Y;
 
