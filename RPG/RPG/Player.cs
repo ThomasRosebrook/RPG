@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 
 namespace RPG
@@ -24,23 +18,37 @@ namespace RPG
 
         public int luck;
 
-        private Texture2D texture;
+        private Texture2D battleTexture;
+
+        private Texture2D worldTexture;
+
+        private int animationIndex = 0;
+
+        private double animationTimer = 0;
+
+        public Vector2 Position { get; set; }
 
         public TurnAction Action;
 
         public void LoadContent()
         {
-            texture = _content.Load<Texture2D>("MainCharacterFight");
+            battleTexture = _content.Load<Texture2D>("MainCharacterFight");
+            worldTexture = _content.Load<Texture2D>("Player");
         }
 
         public void Update(GameTime gameTime)
         {
-
+            if (animationTimer >= 5)
+            {
+                animationTimer -= 5;
+                animationIndex = (animationIndex == 1) ? 0 : 1;
+            }
+            else animationTimer += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(worldTexture, Position, new Rectangle(animationIndex * 60, 0,60,60), Color.White);
         }
     }
 }
