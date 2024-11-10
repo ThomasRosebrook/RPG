@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.CompilerServices;
+using RPG.Interactables;
 
 namespace RPG.Screens
 {
@@ -20,7 +21,6 @@ namespace RPG.Screens
         private int height;
         private Player player;
         Tilemap tilemap;
-        private Interactable interact; 
         static List<string> tilemaps = new List<string>
         {
             "Tilemap1.txt",
@@ -146,6 +146,10 @@ namespace RPG.Screens
             PixelFont.DrawString(spriteBatch, FontSize.Medium, new Vector2(width / 2 - size.X / 2, height - size.Y), Color.White, currentText);
 
             spriteBatch.End();
+        }
+        public void openDoor()
+        {
+
         }
     }
 }
