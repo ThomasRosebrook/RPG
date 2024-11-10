@@ -119,7 +119,7 @@ namespace RPG.Screens
                             menu = new AttackScreen(_player, _enemy, _changeTurn);
                             ScreenManager.AddScreen(menu);
                         }
-                        if (menu.IsExiting && menu.test == true)
+                        if (menu.test == true)
                         {
                             menu.ExitScreen();
                             _changeTurn.Invoke();
@@ -180,7 +180,6 @@ namespace RPG.Screens
 
         public void EnemyTurn()
         {
-            whoTurn = Turn.Player;
             int turn = _rand.Next(2);
 
             switch (turn)
