@@ -18,7 +18,7 @@ Tilemap
 66,556,556,556,66,556,556,1057,66,66,66,66,66,66,66
 d,7,1,Castle Castle,Home to the best walls on this screen!!!
 d,4,5,Door #5,The door appears to be painted onto a wall.
-d,4,9,Door #3,A very unkept house
+d,4,9,Door #3,A very unkept house 
 d,6,9,Square Shaped cat,*meow*
 d,4,13,Door #1,You knock on the door, but no one is home
 d,12,5,Door #6,Locked 

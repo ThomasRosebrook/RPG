@@ -46,7 +46,7 @@ namespace RPG.Screens
             {
                 _player.HP -= 2;
             }
-        }
+        } 
 
         protected override void SelectOptionFour()
         {
